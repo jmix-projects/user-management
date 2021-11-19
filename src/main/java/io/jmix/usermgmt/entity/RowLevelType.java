@@ -21,21 +21,21 @@ import io.jmix.core.metamodel.datatype.impl.EnumClass;
 import javax.annotation.Nullable;
 import java.util.Objects;
 
-public enum RowLevelPolicyType implements EnumClass<String> {
+public enum RowLevelType implements EnumClass<String> {
 
     JPQL("jpql"),
     PREDICATE("predicate");
 
     private String id;
 
-    RowLevelPolicyType(String id) {
+    RowLevelType(String id) {
         this.id = id;
     }
 
     @Nullable
-    public static RowLevelPolicyType fromId(String id) {
-        for (RowLevelPolicyType rowLevelPolicyType : RowLevelPolicyType.values()) {
-            if (Objects.equals(id, rowLevelPolicyType.getId())) return rowLevelPolicyType;
+    public static RowLevelType fromId(String id) {
+        for (RowLevelType rowLevelType : RowLevelType.values()) {
+            if (Objects.equals(id, rowLevelType.getId())) return rowLevelType;
         }
         return null;
     }

@@ -43,6 +43,11 @@ dependencies {
     implementation("io.jmix.security:jmix-security-oauth2-starter")
     implementation("io.jmix.graphql:jmix-graphql-starter")
     runtimeOnly("com.graphql-java-kickstart:graphiql-spring-boot-starter:8.1.1")
+    implementation("com.microsoft.sqlserver:mssql-jdbc")
+    implementation("org.postgresql:postgresql")
+    implementation("mysql:mysql-connector-java")
+    implementation("org.mariadb.jdbc:mariadb-java-client")
+    implementation("com.oracle.ojdbc:ojdbc8")
 }
 
 test {

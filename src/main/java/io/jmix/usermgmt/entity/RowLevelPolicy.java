@@ -92,11 +92,11 @@ public class RowLevelPolicy implements Serializable {
         this.entityName = entityName;
     }
 
-    public RowLevelPolicyAction getAction() {
-        return RowLevelPolicyAction.fromId(action);
+    public RowLevelAction getAction() {
+        return RowLevelAction.fromId(action);
     }
 
-    public void setAction(RowLevelPolicyAction action) {
+    public void setAction(RowLevelAction action) {
         this.action = action != null ? action.getId() : null;
     }
 
@@ -124,11 +124,11 @@ public class RowLevelPolicy implements Serializable {
         this.whereClause = whereClause;
     }
 
-    public RowLevelPolicyType getType() {
-        return RowLevelPolicyType.fromId(type);
+    public RowLevelType getType() {
+        return RowLevelType.fromId(type);
     }
 
-    public void setType(RowLevelPolicyType type) {
+    public void setType(RowLevelType type) {
         this.type = type != null ? type.getId() : null;
     }
 
