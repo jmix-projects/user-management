@@ -1,29 +1,31 @@
-import React from "react";
-import { Form, Button, Card, Space } from "antd";
-import { useForm } from "antd/es/form/Form";
-import { observer } from "mobx-react";
-import { FormattedMessage } from "react-intl";
+import React, {useEffect, useState} from "react";
+import {Button, Card, Form, Space} from "antd";
+import {useForm} from "antd/es/form/Form";
+import {observer} from "mobx-react";
+import {FormattedMessage} from "react-intl";
 import {
+  ant_to_jmixFront,
   createUseAntdForm,
   createUseAntdFormValidation,
-  RetryDialog,
   Field,
   GlobalErrorsAlert,
+  RetryDialog,
   Spinner,
+  TextArea,
   useEntityPersistCallbacks,
-  useSubmitFailedCallback,
-  ant_to_jmixFront
+  useSubmitFailedCallback
 } from "@haulmont/jmix-react-antd";
 import {
   createAntdFormValidationMessages,
-  useEntityEditor,
   EntityEditorProps,
   registerEntityEditor,
-  useDefaultEditorHotkeys
+  useDefaultEditorHotkeys,
+  useEntityEditor
 } from "@haulmont/jmix-react-web";
-import { gql } from "@apollo/client";
+import {gql} from "@apollo/client";
 import styles from "../../app/App.module.css";
-import { RowLevelPolicy } from "../../jmix/entities/umgmt_RowLevelPolicy";
+import {RowLevelPolicy} from "../../jmix/entities/umgmt_RowLevelPolicy";
+import {RowLevelType} from "../../jmix/enums/enums";
 
 const ENTITY_NAME = "umgmt_RowLevelPolicy";
 const ROUTING_PATH = "/rowLevelPolicyEditor";
@@ -64,8 +66,8 @@ const RowLevelPolicyEditor = observer(
     const onSubmitFailed = useSubmitFailedCallback();
     const {
       executeLoadQuery,
-      loadQueryResult: { loading: queryLoading, error: queryError },
-      upsertMutationResult: { loading: upsertLoading },
+      loadQueryResult: {loading: queryLoading, error: queryError},
+      upsertMutationResult: {loading: upsertLoading},
       serverValidationErrors,
       intl,
       handleSubmit,
@@ -83,15 +85,25 @@ const RowLevelPolicyEditor = observer(
       useEntityEditorFormValidation: createUseAntdFormValidation(form)
     });
 
-    useDefaultEditorHotkeys({ saveEntity: form.submit });
+    const [type, setType] = useState<any>();
+
+    function handleTypeChange(value) {
+      setType(value)
+    }
+
+    useEffect(() => {
+      setType(form.getFieldValue('type'))
+    }, [form])
+
+    useDefaultEditorHotkeys({saveEntity: form.submit});
 
     if (queryLoading) {
-      return <Spinner />;
+      return <Spinner/>;
     }
 
     if (queryError != null) {
       console.error(queryError);
-      return <RetryDialog onRetry={executeLoadQuery} />;
+      return <RetryDialog onRetry={executeLoadQuery}/>;
     }
 
     return (
@@ -107,8 +119,8 @@ const RowLevelPolicyEditor = observer(
             entityName={ENTITY_NAME}
             propertyName="action"
             formItemProps={{
-              style: { marginBottom: "12px" },
-              rules: [{ required: true }]
+              style: {marginBottom: "12px"},
+              rules: [{required: true}]
             }}
           />
 
@@ -116,24 +128,8 @@ const RowLevelPolicyEditor = observer(
             entityName={ENTITY_NAME}
             propertyName="entityName"
             formItemProps={{
-              style: { marginBottom: "12px" },
-              rules: [{ required: true }]
-            }}
-          />
-
-          <Field
-            entityName={ENTITY_NAME}
-            propertyName="joinClause"
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
-          />
-
-          <Field
-            entityName={ENTITY_NAME}
-            propertyName="script"
-            formItemProps={{
-              style: { marginBottom: "12px" }
+              style: {marginBottom: "12px"},
+              rules: [{required: true}]
             }}
           />
 
@@ -141,28 +137,50 @@ const RowLevelPolicyEditor = observer(
             entityName={ENTITY_NAME}
             propertyName="type"
             formItemProps={{
-              style: { marginBottom: "12px" },
-              rules: [{ required: true }]
+              style: {marginBottom: "12px"},
+              rules: [{required: true}]
+            }}
+            componentProps={{
+              onChange: handleTypeChange
             }}
           />
 
-          <Field
+          <TextArea
+            entityName={ENTITY_NAME}
+            propertyName="script"
+            formItemProps={{
+              style: {marginBottom: "12px"},
+              hidden: type === RowLevelType.JPQL
+            }}
+          />
+
+          <TextArea
+            entityName={ENTITY_NAME}
+            propertyName="joinClause"
+            formItemProps={{
+              style: {marginBottom: "12px"},
+              hidden: type === RowLevelType.PREDICATE
+            }}
+          />
+
+          <TextArea
             entityName={ENTITY_NAME}
             propertyName="whereClause"
             formItemProps={{
-              style: { marginBottom: "12px" }
+              style: {marginBottom: "12px"},
+              hidden: type === RowLevelType.PREDICATE
             }}
           />
 
-          <GlobalErrorsAlert serverValidationErrors={serverValidationErrors} />
+          <GlobalErrorsAlert serverValidationErrors={serverValidationErrors}/>
 
-          <Form.Item style={{ textAlign: "center" }}>
+          <Form.Item style={{textAlign: "center"}}>
             <Space size={8}>
               <Button htmlType="button" onClick={handleCancelBtnClick}>
-                <FormattedMessage id="common.cancel" />
+                <FormattedMessage id="common.cancel"/>
               </Button>
               <Button type="primary" htmlType="submit" loading={upsertLoading}>
-                <FormattedMessage id={submitBtnCaption} />
+                <FormattedMessage id={submitBtnCaption}/>
               </Button>
             </Space>
           </Form.Item>

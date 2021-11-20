@@ -16,7 +16,9 @@
 
 package io.jmix.usermgmt.entity;
 
+import io.jmix.core.Messages;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.*;
@@ -138,5 +140,10 @@ public class RowLevelPolicy implements Serializable {
 
     public void setScript(String script) {
         this.script = script;
+    }
+
+    @InstanceName
+    public String getInstanceName(Messages messages) {
+        return entityName + ":" + messages.getMessage(getType());
     }
 }
