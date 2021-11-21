@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {Button, Card, Form, Space} from "antd";
 import {useForm} from "antd/es/form/Form";
 import {observer} from "mobx-react";
@@ -13,7 +13,7 @@ import {
   Spinner,
   TextArea,
   useEntityPersistCallbacks,
-  useSubmitFailedCallback
+  useSubmitFailedCallback,
 } from "@haulmont/jmix-react-antd";
 import {
   createAntdFormValidationMessages,
@@ -26,6 +26,9 @@ import {gql} from "@apollo/client";
 import styles from "../../app/App.module.css";
 import {RowLevelPolicy} from "../../jmix/entities/umgmt_RowLevelPolicy";
 import {RowLevelType} from "../../jmix/enums/enums";
+import {EntityTypeField} from "../entity-type-field";
+import {Metadata, useMetadata} from "@haulmont/jmix-react-core";
+import {getAllPersistentEntityTypes} from "../metadata";
 
 const ENTITY_NAME = "umgmt_RowLevelPolicy";
 const ROUTING_PATH = "/rowLevelPolicyEditor";
@@ -95,6 +98,12 @@ const RowLevelPolicyEditor = observer(
       setType(form.getFieldValue('type'))
     }, [form])
 
+    const metadata: Metadata = useMetadata();
+
+    const allEntityTypes = useMemo(() => {
+      return getAllPersistentEntityTypes(metadata)
+    }, [metadata]);
+
     useDefaultEditorHotkeys({saveEntity: form.submit});
 
     if (queryLoading) {
@@ -113,8 +122,8 @@ const RowLevelPolicyEditor = observer(
           onFinishFailed={onSubmitFailed}
           layout="vertical"
           form={form}
-          validateMessages={createAntdFormValidationMessages(intl)}
-        >
+          validateMessages={createAntdFormValidationMessages(intl)}>
+
           <Field
             entityName={ENTITY_NAME}
             propertyName="action"
@@ -124,13 +133,14 @@ const RowLevelPolicyEditor = observer(
             }}
           />
 
-          <Field
+          <EntityTypeField
             entityName={ENTITY_NAME}
             propertyName="entityName"
             formItemProps={{
               style: {marginBottom: "12px"},
               rules: [{required: true}]
             }}
+            entityTypeOptions={allEntityTypes}
           />
 
           <Field
