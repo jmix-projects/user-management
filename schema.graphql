@@ -16,8 +16,14 @@ type Mutation {
     delete_ui_FilterConfiguration(id: String!): Void
     delete_ui_Setting(id: String!): Void
     delete_ui_TablePresentation(id: String!): Void
+    delete_umgmt_EntityAttributePolicy(id: String!): Void
+    delete_umgmt_EntityPolicy(id: String!): Void
+    delete_umgmt_MenuPolicy(id: String!): Void
+    delete_umgmt_ResourceRole(id: String!): Void
     delete_umgmt_RowLevelPolicy(id: String!): Void
     delete_umgmt_RowLevelRole(id: String!): Void
+    delete_umgmt_ScreenPolicy(id: String!): Void
+    delete_umgmt_SpecificPolicy(id: String!): Void
     delete_umgmt_User(id: String!): Void
     upsert_sec_ResourcePolicyEntity(resourcePolicyEntity: inp_sec_ResourcePolicyEntity!): sec_ResourcePolicyEntity
     upsert_sec_ResourceRoleEntity(resourceRoleEntity: inp_sec_ResourceRoleEntity!): sec_ResourceRoleEntity
@@ -28,8 +34,14 @@ type Mutation {
     upsert_ui_FilterConfiguration(filterConfiguration: inp_ui_FilterConfiguration!): ui_FilterConfiguration
     upsert_ui_Setting(uiSetting: inp_ui_Setting!): ui_Setting
     upsert_ui_TablePresentation(uiTablePresentation: inp_ui_TablePresentation!): ui_TablePresentation
+    upsert_umgmt_EntityAttributePolicy(entityAttributePolicy: inp_umgmt_EntityAttributePolicy!): umgmt_EntityAttributePolicy
+    upsert_umgmt_EntityPolicy(entityPolicy: inp_umgmt_EntityPolicy!): umgmt_EntityPolicy
+    upsert_umgmt_MenuPolicy(menuPolicy: inp_umgmt_MenuPolicy!): umgmt_MenuPolicy
+    upsert_umgmt_ResourceRole(resourceRole: inp_umgmt_ResourceRole!): umgmt_ResourceRole
     upsert_umgmt_RowLevelPolicy(rowLevelPolicy: inp_umgmt_RowLevelPolicy!): umgmt_RowLevelPolicy
     upsert_umgmt_RowLevelRole(rowLevelRole: inp_umgmt_RowLevelRole!): umgmt_RowLevelRole
+    upsert_umgmt_ScreenPolicy(screenPolicy: inp_umgmt_ScreenPolicy!): umgmt_ScreenPolicy
+    upsert_umgmt_SpecificPolicy(specificPolicy: inp_umgmt_SpecificPolicy!): umgmt_SpecificPolicy
     upsert_umgmt_User(user: inp_umgmt_User!): umgmt_User
 }
 
@@ -173,6 +185,66 @@ type Query {
         "sort the items by one or more fields"
         orderBy: inp_ui_TablePresentationOrderBy
     ): [ui_TablePresentation]
+    umgmt_EntityAttributePolicyById(id: String!): umgmt_EntityAttributePolicy
+    umgmt_EntityAttributePolicyCount(
+        "expressions to compare umgmt_EntityAttributePolicy objects, all items are combined with logical 'AND'"
+        filter: [inp_umgmt_EntityAttributePolicyFilterCondition]
+    ): Long
+    umgmt_EntityAttributePolicyList(
+        "expressions to compare umgmt_EntityAttributePolicy objects, all items are combined with logical 'AND'"
+        filter: [inp_umgmt_EntityAttributePolicyFilterCondition],
+        "limit the number of items returned"
+        limit: Int,
+        "skip the first n items"
+        offset: Int,
+        "sort the items by one or more fields"
+        orderBy: inp_umgmt_EntityAttributePolicyOrderBy
+    ): [umgmt_EntityAttributePolicy]
+    umgmt_EntityPolicyById(id: String!): umgmt_EntityPolicy
+    umgmt_EntityPolicyCount(
+        "expressions to compare umgmt_EntityPolicy objects, all items are combined with logical 'AND'"
+        filter: [inp_umgmt_EntityPolicyFilterCondition]
+    ): Long
+    umgmt_EntityPolicyList(
+        "expressions to compare umgmt_EntityPolicy objects, all items are combined with logical 'AND'"
+        filter: [inp_umgmt_EntityPolicyFilterCondition],
+        "limit the number of items returned"
+        limit: Int,
+        "skip the first n items"
+        offset: Int,
+        "sort the items by one or more fields"
+        orderBy: inp_umgmt_EntityPolicyOrderBy
+    ): [umgmt_EntityPolicy]
+    umgmt_MenuPolicyById(id: String!): umgmt_MenuPolicy
+    umgmt_MenuPolicyCount(
+        "expressions to compare umgmt_MenuPolicy objects, all items are combined with logical 'AND'"
+        filter: [inp_umgmt_MenuPolicyFilterCondition]
+    ): Long
+    umgmt_MenuPolicyList(
+        "expressions to compare umgmt_MenuPolicy objects, all items are combined with logical 'AND'"
+        filter: [inp_umgmt_MenuPolicyFilterCondition],
+        "limit the number of items returned"
+        limit: Int,
+        "skip the first n items"
+        offset: Int,
+        "sort the items by one or more fields"
+        orderBy: inp_umgmt_MenuPolicyOrderBy
+    ): [umgmt_MenuPolicy]
+    umgmt_ResourceRoleById(id: String!): umgmt_ResourceRole
+    umgmt_ResourceRoleCount(
+        "expressions to compare umgmt_ResourceRole objects, all items are combined with logical 'AND'"
+        filter: [inp_umgmt_ResourceRoleFilterCondition]
+    ): Long
+    umgmt_ResourceRoleList(
+        "expressions to compare umgmt_ResourceRole objects, all items are combined with logical 'AND'"
+        filter: [inp_umgmt_ResourceRoleFilterCondition],
+        "limit the number of items returned"
+        limit: Int,
+        "skip the first n items"
+        offset: Int,
+        "sort the items by one or more fields"
+        orderBy: inp_umgmt_ResourceRoleOrderBy
+    ): [umgmt_ResourceRole]
     umgmt_RowLevelPolicyById(id: String!): umgmt_RowLevelPolicy
     umgmt_RowLevelPolicyCount(
         "expressions to compare umgmt_RowLevelPolicy objects, all items are combined with logical 'AND'"
@@ -203,6 +275,36 @@ type Query {
         "sort the items by one or more fields"
         orderBy: inp_umgmt_RowLevelRoleOrderBy
     ): [umgmt_RowLevelRole]
+    umgmt_ScreenPolicyById(id: String!): umgmt_ScreenPolicy
+    umgmt_ScreenPolicyCount(
+        "expressions to compare umgmt_ScreenPolicy objects, all items are combined with logical 'AND'"
+        filter: [inp_umgmt_ScreenPolicyFilterCondition]
+    ): Long
+    umgmt_ScreenPolicyList(
+        "expressions to compare umgmt_ScreenPolicy objects, all items are combined with logical 'AND'"
+        filter: [inp_umgmt_ScreenPolicyFilterCondition],
+        "limit the number of items returned"
+        limit: Int,
+        "skip the first n items"
+        offset: Int,
+        "sort the items by one or more fields"
+        orderBy: inp_umgmt_ScreenPolicyOrderBy
+    ): [umgmt_ScreenPolicy]
+    umgmt_SpecificPolicyById(id: String!): umgmt_SpecificPolicy
+    umgmt_SpecificPolicyCount(
+        "expressions to compare umgmt_SpecificPolicy objects, all items are combined with logical 'AND'"
+        filter: [inp_umgmt_SpecificPolicyFilterCondition]
+    ): Long
+    umgmt_SpecificPolicyList(
+        "expressions to compare umgmt_SpecificPolicy objects, all items are combined with logical 'AND'"
+        filter: [inp_umgmt_SpecificPolicyFilterCondition],
+        "limit the number of items returned"
+        limit: Int,
+        "skip the first n items"
+        offset: Int,
+        "sort the items by one or more fields"
+        orderBy: inp_umgmt_SpecificPolicyOrderBy
+    ): [umgmt_SpecificPolicy]
     umgmt_UserById(id: String!): umgmt_User
     umgmt_UserCount(
         "expressions to compare umgmt_User objects, all items are combined with logical 'AND'"
@@ -380,6 +482,49 @@ type ui_TablePresentation {
     username: String
 }
 
+type umgmt_EntityAttributePolicy {
+    _instanceName: String
+    action: AttributePolicyType
+    attribute: String
+    entityName: String
+    id: UUID
+    role: umgmt_ResourceRole
+    version: Int
+}
+
+type umgmt_EntityPolicy {
+    _instanceName: String
+    action: EntityPolicyType
+    entityName: String
+    id: UUID
+    role: umgmt_ResourceRole
+    version: Int
+}
+
+type umgmt_MenuPolicy {
+    _instanceName: String
+    id: UUID
+    resource: String
+    role: umgmt_ResourceRole
+    version: Int
+}
+
+type umgmt_ResourceRole {
+    _instanceName: String
+    childRoles: String
+    code: String
+    description: String
+    entityAttributePolicies: [umgmt_EntityAttributePolicy]
+    entityPolicies: [umgmt_EntityPolicy]
+    id: UUID
+    menuPolicies: [umgmt_MenuPolicy]
+    name: String
+    scopes: String
+    screenPolicies: [umgmt_ScreenPolicy]
+    specificPolicies: [umgmt_SpecificPolicy]
+    version: Int
+}
+
 type umgmt_RowLevelPolicy {
     _instanceName: String
     action: RowLevelAction
@@ -404,6 +549,22 @@ type umgmt_RowLevelRole {
     version: Int
 }
 
+type umgmt_ScreenPolicy {
+    _instanceName: String
+    id: UUID
+    resource: String
+    role: umgmt_ResourceRole
+    version: Int
+}
+
+type umgmt_SpecificPolicy {
+    _instanceName: String
+    id: UUID
+    resource: String
+    role: umgmt_ResourceRole
+    version: Int
+}
+
 type umgmt_User {
     _instanceName: String
     active: Boolean
@@ -415,6 +576,19 @@ type umgmt_User {
     timeZoneId: String
     username: String
     version: Int
+}
+
+enum AttributePolicyType {
+    MODIFY
+    VIEW
+}
+
+enum EntityPolicyType {
+    ALL
+    CREATE
+    DELETE
+    READ
+    UPDATE
 }
 
 enum RowLevelAction {
@@ -1286,6 +1460,129 @@ input inp_ui_TablePresentationOrderBy {
     username: [SortOrder]
 }
 
+input inp_umgmt_EntityAttributePolicy {
+    action: AttributePolicyType
+    attribute: String
+    entityName: String
+    id: UUID
+    role: inp_umgmt_ResourceRole
+    version: Int
+}
+
+input inp_umgmt_EntityAttributePolicyFilterCondition {
+    AND: [inp_umgmt_EntityAttributePolicyFilterCondition]
+    OR: [inp_umgmt_EntityAttributePolicyFilterCondition]
+    "is null"
+    _isNull: Boolean
+    action: [String]
+    attribute: [inp_StringFilterCondition]
+    entityName: [inp_StringFilterCondition]
+    id: [inp_UUIDFilterCondition]
+    role: [inp_umgmt_ResourceRoleFilterCondition]
+    version: [inp_IntFilterCondition]
+}
+
+input inp_umgmt_EntityAttributePolicyOrderBy {
+    action: [String]
+    attribute: [SortOrder]
+    entityName: [SortOrder]
+    id: SortOrder
+    role: inp_umgmt_ResourceRoleOrderBy
+    version: SortOrder
+}
+
+input inp_umgmt_EntityPolicy {
+    action: EntityPolicyType
+    entityName: String
+    id: UUID
+    role: inp_umgmt_ResourceRole
+    version: Int
+}
+
+input inp_umgmt_EntityPolicyFilterCondition {
+    AND: [inp_umgmt_EntityPolicyFilterCondition]
+    OR: [inp_umgmt_EntityPolicyFilterCondition]
+    "is null"
+    _isNull: Boolean
+    action: [String]
+    entityName: [inp_StringFilterCondition]
+    id: [inp_UUIDFilterCondition]
+    role: [inp_umgmt_ResourceRoleFilterCondition]
+    version: [inp_IntFilterCondition]
+}
+
+input inp_umgmt_EntityPolicyOrderBy {
+    action: [String]
+    entityName: [SortOrder]
+    id: SortOrder
+    role: inp_umgmt_ResourceRoleOrderBy
+    version: SortOrder
+}
+
+input inp_umgmt_MenuPolicy {
+    id: UUID
+    resource: String
+    role: inp_umgmt_ResourceRole
+    version: Int
+}
+
+input inp_umgmt_MenuPolicyFilterCondition {
+    AND: [inp_umgmt_MenuPolicyFilterCondition]
+    OR: [inp_umgmt_MenuPolicyFilterCondition]
+    "is null"
+    _isNull: Boolean
+    id: [inp_UUIDFilterCondition]
+    resource: [inp_StringFilterCondition]
+    role: [inp_umgmt_ResourceRoleFilterCondition]
+    version: [inp_IntFilterCondition]
+}
+
+input inp_umgmt_MenuPolicyOrderBy {
+    id: SortOrder
+    resource: [SortOrder]
+    role: inp_umgmt_ResourceRoleOrderBy
+    version: SortOrder
+}
+
+input inp_umgmt_ResourceRole {
+    childRoles: String
+    code: String
+    description: String
+    entityAttributePolicies: [inp_umgmt_EntityAttributePolicy]
+    entityPolicies: [inp_umgmt_EntityPolicy]
+    id: UUID
+    menuPolicies: [inp_umgmt_MenuPolicy]
+    name: String
+    scopes: String
+    screenPolicies: [inp_umgmt_ScreenPolicy]
+    specificPolicies: [inp_umgmt_SpecificPolicy]
+    version: Int
+}
+
+input inp_umgmt_ResourceRoleFilterCondition {
+    AND: [inp_umgmt_ResourceRoleFilterCondition]
+    OR: [inp_umgmt_ResourceRoleFilterCondition]
+    "is null"
+    _isNull: Boolean
+    childRoles: [inp_StringFilterCondition]
+    code: [inp_StringFilterCondition]
+    description: [inp_StringFilterCondition]
+    id: [inp_UUIDFilterCondition]
+    name: [inp_StringFilterCondition]
+    scopes: [inp_StringFilterCondition]
+    version: [inp_IntFilterCondition]
+}
+
+input inp_umgmt_ResourceRoleOrderBy {
+    childRoles: [SortOrder]
+    code: [SortOrder]
+    description: [SortOrder]
+    id: SortOrder
+    name: [SortOrder]
+    scopes: [SortOrder]
+    version: SortOrder
+}
+
 input inp_umgmt_RowLevelPolicy {
     action: RowLevelAction
     entityName: String
@@ -1355,6 +1652,56 @@ input inp_umgmt_RowLevelRoleOrderBy {
     description: [SortOrder]
     id: SortOrder
     name: [SortOrder]
+    version: SortOrder
+}
+
+input inp_umgmt_ScreenPolicy {
+    id: UUID
+    resource: String
+    role: inp_umgmt_ResourceRole
+    version: Int
+}
+
+input inp_umgmt_ScreenPolicyFilterCondition {
+    AND: [inp_umgmt_ScreenPolicyFilterCondition]
+    OR: [inp_umgmt_ScreenPolicyFilterCondition]
+    "is null"
+    _isNull: Boolean
+    id: [inp_UUIDFilterCondition]
+    resource: [inp_StringFilterCondition]
+    role: [inp_umgmt_ResourceRoleFilterCondition]
+    version: [inp_IntFilterCondition]
+}
+
+input inp_umgmt_ScreenPolicyOrderBy {
+    id: SortOrder
+    resource: [SortOrder]
+    role: inp_umgmt_ResourceRoleOrderBy
+    version: SortOrder
+}
+
+input inp_umgmt_SpecificPolicy {
+    id: UUID
+    resource: String
+    role: inp_umgmt_ResourceRole
+    version: Int
+}
+
+input inp_umgmt_SpecificPolicyFilterCondition {
+    AND: [inp_umgmt_SpecificPolicyFilterCondition]
+    OR: [inp_umgmt_SpecificPolicyFilterCondition]
+    "is null"
+    _isNull: Boolean
+    id: [inp_UUIDFilterCondition]
+    resource: [inp_StringFilterCondition]
+    role: [inp_umgmt_ResourceRoleFilterCondition]
+    version: [inp_IntFilterCondition]
+}
+
+input inp_umgmt_SpecificPolicyOrderBy {
+    id: SortOrder
+    resource: [SortOrder]
+    role: inp_umgmt_ResourceRoleOrderBy
     version: SortOrder
 }
 

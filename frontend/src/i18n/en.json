@@ -1,4 +1,16 @@
 {
+  "screen.ResourceRoleList": "Resource Role List",
+  "screen.ResourceRoleEditor": "Resource Role Editor",
+  "screen.SpecificPolicyList": "Specific Policy List",
+  "screen.SpecificPolicyEditor": "Specific Policy Editor",
+  "screen.ScreenPolicyList": "Screen Policy List",
+  "screen.ScreenPolicyEditor": "Screen Policy Editor",
+  "screen.MenuPolicyList": "Menu Policy List",
+  "screen.MenuPolicyEditor": "Menu Policy Editor",
+  "screen.EntityAttributePolicyList": "Entity Attribute Policy List",
+  "screen.EntityAttributePolicyEditor": "Entity Attribute Policy Editor",
+  "screen.EntityPolicyList": "Entity Policy List",
+  "screen.EntityPolicyEditor": "Entity Policy Editor",
   "screen.RowLevelPolicyList": "Row Level Policy List",
   "screen.RowLevelPolicyEditor": "Row Level Policy Editor",
   "screen.RowLevelRoleList": "Row Level Role List",
@@ -154,5 +166,6 @@
   "antd.form.validation.array.min": "${name} shall have no less than ${min} elements.",
   "antd.form.validation.array.max": "${name} shall have no more than ${max} elements.",
   "antd.form.validation.array.range": "${name} shall have from ${min} to ${max} elements.",
-  "antd.form.validation.pattern.mismatch": "${name} does not match pattern ${pattern}."
+  "antd.form.validation.pattern.mismatch": "${name} does not match pattern ${pattern}.",
+  "jmix.usermgmt.allEntities": "All entities"
 }

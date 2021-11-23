@@ -1,6 +1,405 @@
 {
   "entities": [
     {
+      "name": "umgmt_EntityAttributePolicy",
+      "className": "EntityAttributePolicy",
+      "persistentEntity": true,
+      "idAttributeName": "id",
+      "attributes": [
+        {
+          "name": "id",
+          "type": {
+            "packageName": "java.util",
+            "className": "UUID",
+            "fqn": "java.util.UUID",
+            "label": "UUID"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "version",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Integer",
+            "fqn": "java.lang.Integer",
+            "label": "Integer"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "entityName",
+          "type": {
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "attribute",
+          "type": {
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "action",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "AttributePolicyType",
+            "fqn": "io.jmix.usermgmt.entity.AttributePolicyType",
+            "label": "AttributePolicyType"
+          },
+          "mappingType": "ENUM",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
+          "name": "role",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "ResourceRole",
+            "fqn": "io.jmix.usermgmt.entity.ResourceRole",
+            "label": "ResourceRole",
+            "entityName": "umgmt_ResourceRole"
+          },
+          "mappingType": "ASSOCIATION",
+          "cardinality": "MANY_TO_ONE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        }
+      ]
+    },
+    {
+      "name": "umgmt_EntityPolicy",
+      "className": "EntityPolicy",
+      "persistentEntity": true,
+      "idAttributeName": "id",
+      "attributes": [
+        {
+          "name": "id",
+          "type": {
+            "packageName": "java.util",
+            "className": "UUID",
+            "fqn": "java.util.UUID",
+            "label": "UUID"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "version",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Integer",
+            "fqn": "java.lang.Integer",
+            "label": "Integer"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "entityName",
+          "type": {
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "action",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "EntityPolicyType",
+            "fqn": "io.jmix.usermgmt.entity.EntityPolicyType",
+            "label": "EntityPolicyType"
+          },
+          "mappingType": "ENUM",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "role",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "ResourceRole",
+            "fqn": "io.jmix.usermgmt.entity.ResourceRole",
+            "label": "ResourceRole",
+            "entityName": "umgmt_ResourceRole"
+          },
+          "mappingType": "ASSOCIATION",
+          "cardinality": "MANY_TO_ONE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        }
+      ]
+    },
+    {
+      "name": "umgmt_MenuPolicy",
+      "className": "MenuPolicy",
+      "persistentEntity": true,
+      "idAttributeName": "id",
+      "attributes": [
+        {
+          "name": "id",
+          "type": {
+            "packageName": "java.util",
+            "className": "UUID",
+            "fqn": "java.util.UUID",
+            "label": "UUID"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "version",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Integer",
+            "fqn": "java.lang.Integer",
+            "label": "Integer"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "resource",
+          "type": {
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "role",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "ResourceRole",
+            "fqn": "io.jmix.usermgmt.entity.ResourceRole",
+            "label": "ResourceRole",
+            "entityName": "umgmt_ResourceRole"
+          },
+          "mappingType": "ASSOCIATION",
+          "cardinality": "MANY_TO_ONE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        }
+      ]
+    },
+    {
+      "name": "umgmt_ResourceRole",
+      "className": "ResourceRole",
+      "persistentEntity": true,
+      "idAttributeName": "id",
+      "attributes": [
+        {
+          "name": "id",
+          "type": {
+            "packageName": "java.util",
+            "className": "UUID",
+            "fqn": "java.util.UUID",
+            "label": "UUID"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "version",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Integer",
+            "fqn": "java.lang.Integer",
+            "label": "Integer"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "name",
+          "type": {
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "code",
+          "type": {
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "description",
+          "type": {
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
+          "name": "entityPolicies",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "EntityPolicy",
+            "fqn": "io.jmix.usermgmt.entity.EntityPolicy",
+            "label": "EntityPolicy",
+            "entityName": "umgmt_EntityPolicy"
+          },
+          "mappingType": "COMPOSITION",
+          "cardinality": "ONE_TO_MANY",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
+          "name": "entityAttributePolicies",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "EntityAttributePolicy",
+            "fqn": "io.jmix.usermgmt.entity.EntityAttributePolicy",
+            "label": "EntityAttributePolicy",
+            "entityName": "umgmt_EntityAttributePolicy"
+          },
+          "mappingType": "COMPOSITION",
+          "cardinality": "ONE_TO_MANY",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
+          "name": "screenPolicies",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "ScreenPolicy",
+            "fqn": "io.jmix.usermgmt.entity.ScreenPolicy",
+            "label": "ScreenPolicy",
+            "entityName": "umgmt_ScreenPolicy"
+          },
+          "mappingType": "COMPOSITION",
+          "cardinality": "ONE_TO_MANY",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
+          "name": "menuPolicies",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "MenuPolicy",
+            "fqn": "io.jmix.usermgmt.entity.MenuPolicy",
+            "label": "MenuPolicy",
+            "entityName": "umgmt_MenuPolicy"
+          },
+          "mappingType": "COMPOSITION",
+          "cardinality": "ONE_TO_MANY",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
+          "name": "specificPolicies",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "SpecificPolicy",
+            "fqn": "io.jmix.usermgmt.entity.SpecificPolicy",
+            "label": "SpecificPolicy",
+            "entityName": "umgmt_SpecificPolicy"
+          },
+          "mappingType": "COMPOSITION",
+          "cardinality": "ONE_TO_MANY",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
+          "name": "childRoles",
+          "type": {
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
+          "name": "scopes",
+          "type": {
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        }
+      ]
+    },
+    {
       "name": "umgmt_RowLevelPolicy",
       "className": "RowLevelPolicy",
       "persistentEntity": true,
@@ -229,6 +628,130 @@
       ]
     },
     {
+      "name": "umgmt_ScreenPolicy",
+      "className": "ScreenPolicy",
+      "persistentEntity": true,
+      "idAttributeName": "id",
+      "attributes": [
+        {
+          "name": "id",
+          "type": {
+            "packageName": "java.util",
+            "className": "UUID",
+            "fqn": "java.util.UUID",
+            "label": "UUID"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "version",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Integer",
+            "fqn": "java.lang.Integer",
+            "label": "Integer"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "resource",
+          "type": {
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "role",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "ResourceRole",
+            "fqn": "io.jmix.usermgmt.entity.ResourceRole",
+            "label": "ResourceRole",
+            "entityName": "umgmt_ResourceRole"
+          },
+          "mappingType": "ASSOCIATION",
+          "cardinality": "MANY_TO_ONE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        }
+      ]
+    },
+    {
+      "name": "umgmt_SpecificPolicy",
+      "className": "SpecificPolicy",
+      "persistentEntity": true,
+      "idAttributeName": "id",
+      "attributes": [
+        {
+          "name": "id",
+          "type": {
+            "packageName": "java.util",
+            "className": "UUID",
+            "fqn": "java.util.UUID",
+            "label": "UUID"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "version",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Integer",
+            "fqn": "java.lang.Integer",
+            "label": "Integer"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "resource",
+          "type": {
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "role",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "ResourceRole",
+            "fqn": "io.jmix.usermgmt.entity.ResourceRole",
+            "label": "ResourceRole",
+            "entityName": "umgmt_ResourceRole"
+          },
+          "mappingType": "ASSOCIATION",
+          "cardinality": "MANY_TO_ONE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        }
+      ]
+    },
+    {
       "name": "umgmt_User",
       "className": "User",
       "persistentEntity": true,
@@ -355,6 +878,46 @@
     }
   ],
   "enums": [
+    {
+      "className": "AttributePolicyType",
+      "fqn": "io.jmix.usermgmt.entity.AttributePolicyType",
+      "values": [
+        {
+          "name": "VIEW",
+          "id": "view"
+        },
+        {
+          "name": "MODIFY",
+          "id": "modify"
+        }
+      ]
+    },
+    {
+      "className": "EntityPolicyType",
+      "fqn": "io.jmix.usermgmt.entity.EntityPolicyType",
+      "values": [
+        {
+          "name": "CREATE",
+          "id": "create"
+        },
+        {
+          "name": "READ",
+          "id": "read"
+        },
+        {
+          "name": "UPDATE",
+          "id": "update"
+        },
+        {
+          "name": "DELETE",
+          "id": "delete"
+        },
+        {
+          "name": "ALL",
+          "id": "all_operations"
+        }
+      ]
+    },
     {
       "className": "RowLevelAction",
       "fqn": "io.jmix.usermgmt.entity.RowLevelAction",

@@ -11,6 +11,18 @@ import {
   Row,
   Space
 } from "antd";
+import ResourceRoleList from "../app/resource-role/ResourceRoleList";
+import ResourceRoleEditor from "../app/resource-role/ResourceRoleEditor";
+import SpecificPolicyList from "../app/specific-policy/SpecificPolicyList";
+import SpecificPolicyEditor from "../app/specific-policy/SpecificPolicyEditor";
+import ScreenPolicyList from "../app/screen-policy/ScreenPolicyList";
+import ScreenPolicyEditor from "../app/screen-policy/ScreenPolicyEditor";
+import MenuPolicyList from "../app/menu-policy/MenuPolicyList";
+import MenuPolicyEditor from "../app/menu-policy/MenuPolicyEditor";
+import EntityAttributePolicyList from "../app/entity-attribute-policy/EntityAttributePolicyList";
+import EntityAttributePolicyEditor from "../app/entity-attribute-policy/EntityAttributePolicyEditor";
+import EntityPolicyList from "../app/entity-policy/EntityPolicyList";
+import EntityPolicyEditor from "../app/entity-policy/EntityPolicyEditor";
 import RowLevelPolicyList from "../app/row-level-policy/RowLevelPolicyList";
 import RowLevelPolicyEditor from "../app/row-level-policy/RowLevelPolicyEditor";
 import RowLevelRoleList from "../app/row-level-role/RowLevelRoleList";
@@ -152,6 +164,66 @@ const palette = () => (
       <Component name="RowLevelPolicyList">
         <Variant>
           <RowLevelPolicyList />
+        </Variant>
+      </Component>
+      <Component name="EntityPolicyEditor">
+        <Variant>
+          <EntityPolicyEditor />
+        </Variant>
+      </Component>
+      <Component name="EntityPolicyList">
+        <Variant>
+          <EntityPolicyList />
+        </Variant>
+      </Component>
+      <Component name="EntityAttributePolicyEditor">
+        <Variant>
+          <EntityAttributePolicyEditor />
+        </Variant>
+      </Component>
+      <Component name="EntityAttributePolicyList">
+        <Variant>
+          <EntityAttributePolicyList />
+        </Variant>
+      </Component>
+      <Component name="MenuPolicyEditor">
+        <Variant>
+          <MenuPolicyEditor />
+        </Variant>
+      </Component>
+      <Component name="MenuPolicyList">
+        <Variant>
+          <MenuPolicyList />
+        </Variant>
+      </Component>
+      <Component name="ScreenPolicyEditor">
+        <Variant>
+          <ScreenPolicyEditor />
+        </Variant>
+      </Component>
+      <Component name="ScreenPolicyList">
+        <Variant>
+          <ScreenPolicyList />
+        </Variant>
+      </Component>
+      <Component name="SpecificPolicyEditor">
+        <Variant>
+          <SpecificPolicyEditor />
+        </Variant>
+      </Component>
+      <Component name="SpecificPolicyList">
+        <Variant>
+          <SpecificPolicyList />
+        </Variant>
+      </Component>
+      <Component name="ResourceRoleEditor">
+        <Variant>
+          <ResourceRoleEditor />
+        </Variant>
+      </Component>
+      <Component name="ResourceRoleList">
+        <Variant>
+          <ResourceRoleList />
         </Variant>
       </Component>
     </Category>
