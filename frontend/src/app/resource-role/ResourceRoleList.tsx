@@ -1,24 +1,24 @@
 import React from "react";
-import { observer } from "mobx-react";
-import { PlusOutlined, LeftOutlined } from "@ant-design/icons";
-import { Button, Tooltip } from "antd";
-import { EntityPermAccessControl } from "@haulmont/jmix-react-core";
+import {observer} from "mobx-react";
+import {LeftOutlined, PlusOutlined} from "@ant-design/icons";
+import {Button, Tooltip} from "antd";
+import {EntityPermAccessControl} from "@haulmont/jmix-react-core";
 import {
-  useEntityList,
   EntityListProps,
   registerEntityList,
-  useDefaultBrowserTableHotkeys
+  useDefaultBrowserTableHotkeys,
+  useEntityList
 } from "@haulmont/jmix-react-web";
 import {
   DataTable,
   RetryDialog,
-  useOpenScreenErrorCallback,
+  saveHistory,
   useEntityDeleteCallback,
-  saveHistory
+  useOpenScreenErrorCallback
 } from "@haulmont/jmix-react-antd";
-import { ResourceRole } from "../../jmix/entities/umgmt_ResourceRole";
-import { FormattedMessage } from "react-intl";
-import { gql } from "@apollo/client";
+import {ResourceRole} from "../../jmix/entities/umgmt_ResourceRole";
+import {FormattedMessage} from "react-intl";
+import {gql} from "@apollo/client";
 
 const ENTITY_NAME = "umgmt_ResourceRole";
 const ROUTING_PATH = "/resourceRoleList";
@@ -46,7 +46,7 @@ const UMGMT_RESOURCEROLE_LIST = gql`
 `;
 
 const ResourceRoleList = observer((props: EntityListProps<ResourceRole>) => {
-  const { entityList, onEntityListChange } = props;
+  const {entityList, onEntityListChange} = props;
   const onOpenScreenError = useOpenScreenErrorCallback();
   const onEntityDelete = useEntityDeleteCallback();
   const {
@@ -54,7 +54,7 @@ const ResourceRoleList = observer((props: EntityListProps<ResourceRole>) => {
     count,
     relationOptions,
     executeListQuery,
-    listQueryResult: { loading, error },
+    listQueryResult: {loading, error},
     handleSelectionChange,
     handleFilterChange,
     handleSortOrderChange,
@@ -84,7 +84,7 @@ const ResourceRoleList = observer((props: EntityListProps<ResourceRole>) => {
 
   if (error != null) {
     console.error(error);
-    return <RetryDialog onRetry={executeListQuery} />;
+    return <RetryDialog onRetry={executeListQuery}/>;
   }
 
   const buttons = [
@@ -95,13 +95,13 @@ const ResourceRoleList = observer((props: EntityListProps<ResourceRole>) => {
     >
       <Button
         htmlType="button"
-        style={{ margin: "0 12px 12px 0" }}
+        style={{margin: "0 12px 12px 0"}}
         type="primary"
-        icon={<PlusOutlined />}
+        icon={<PlusOutlined/>}
         onClick={handleCreateBtnClick}
       >
         <span>
-          <FormattedMessage id="common.create" />
+          <FormattedMessage id="common.create"/>
         </span>
       </Button>
     </EntityPermAccessControl>,
@@ -112,12 +112,12 @@ const ResourceRoleList = observer((props: EntityListProps<ResourceRole>) => {
     >
       <Button
         htmlType="button"
-        style={{ margin: "0 12px 12px 0" }}
+        style={{margin: "0 12px 12px 0"}}
         disabled={entityListState.selectedEntityId == null}
         type="default"
         onClick={handleEditBtnClick}
       >
-        <FormattedMessage id="common.edit" />
+        <FormattedMessage id="common.edit"/>
       </Button>
     </EntityPermAccessControl>,
     <EntityPermAccessControl
@@ -127,24 +127,24 @@ const ResourceRoleList = observer((props: EntityListProps<ResourceRole>) => {
     >
       <Button
         htmlType="button"
-        style={{ margin: "0 12px 12px 0" }}
+        style={{margin: "0 12px 12px 0"}}
         disabled={entityListState.selectedEntityId == null}
         onClick={handleDeleteBtnClick}
         key="remove"
         type="default"
       >
-        <FormattedMessage id="common.remove" />
+        <FormattedMessage id="common.remove"/>
       </Button>
     </EntityPermAccessControl>
   ];
 
   if (entityList != null) {
     buttons.unshift(
-      <Tooltip title={<FormattedMessage id="common.back" />} key="back">
+      <Tooltip title={<FormattedMessage id="common.back"/>} key="back">
         <Button
           htmlType="button"
-          style={{ margin: "0 12px 12px 0" }}
-          icon={<LeftOutlined />}
+          style={{margin: "0 12px 12px 0"}}
+          icon={<LeftOutlined/>}
           onClick={goToParentScreen}
           key="back"
           type="default"
@@ -164,7 +164,7 @@ const ResourceRoleList = observer((props: EntityListProps<ResourceRole>) => {
       entityName={ENTITY_NAME}
       loading={loading}
       error={error}
-      enableFiltersOnColumns={entityList != null ? [] : undefined}
+      enableFiltersOnColumns={[]}
       enableSortingOnColumns={entityList != null ? [] : undefined}
       columnDefinitions={["code", "name"]}
       onRowSelectionChange={handleSelectionChange}
@@ -173,6 +173,9 @@ const ResourceRoleList = observer((props: EntityListProps<ResourceRole>) => {
       onPaginationChange={handlePaginationChange}
       hideSelectionColumn={true}
       buttons={buttons}
+      tableProps={{
+        pagination: false
+      }}
     />
   );
 });

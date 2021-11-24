@@ -20,7 +20,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="ACTION_" type="VARCHAR(255)"/>
-            <column name="ROLE_ID" type="${uuid.type}">
+            <column name="ROLE_ID" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -39,7 +39,7 @@
             <column name="ACTION_" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="ROLE_ID" type="${uuid.type}">
+            <column name="ROLE_ID" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -55,14 +55,14 @@
             <column name="RESOURCE" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="ROLE_ID" type="${uuid.type}">
+            <column name="ROLE_ID" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
     <changeSet id="4" author="umgmt">
         <createTable tableName="UMGMT_RESOURCE_ROLE">
-            <column name="ID" type="${uuid.type}">
+            <column name="ID" type="VARCHAR(255)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="PK_UMGMT_RESOURCE_ROLE"/>
             </column>
             <column name="VERSION" type="INT">
@@ -80,6 +80,49 @@
         </createTable>
     </changeSet>
     <changeSet id="5" author="umgmt">
+        <createTable tableName="UMGMT_ROW_LEVEL_POLICY">
+            <column name="ID" type="${uuid.type}">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_UMGMT_ROW_LEVEL_POLICY"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TYPE_" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ENTITY_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACTION_" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="WHERE_CLAUSE" type="CLOB"/>
+            <column name="JOiN_CLAUSE" type="CLOB"/>
+            <column name="SCRIPT_" type="CLOB"/>
+            <column name="ROLE_ID" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="umgmt">
+        <createTable tableName="UMGMT_ROW_LEVEL_ROLE">
+            <column name="ID" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_UMGMT_ROW_LEVEL_ROLE"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CODE" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPTION" type="VARCHAR(255)"/>
+            <column name="CHILD_ROLES" type="CLOB"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="7" author="umgmt">
         <createTable tableName="UMGMT_SPECIFIC_POLICY">
             <column name="ID" type="${uuid.type}">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="PK_UMGMT_SPECIFIC_POLICY"/>
@@ -90,12 +133,12 @@
             <column name="RESOURCE" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="ROLE_ID" type="${uuid.type}">
+            <column name="ROLE_ID" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet id="6" author="umgmt">
+    <changeSet id="8" author="umgmt">
         <createTable tableName="UMGMT_Screen_POLICY">
             <column name="ID" type="${uuid.type}">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="PK_UMGMT_SCREEN_POLICY"/>
@@ -106,32 +149,37 @@
             <column name="RESOURCE" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="ROLE_ID" type="${uuid.type}">
+            <column name="ROLE_ID" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet id="7" author="umgmt">
+    <changeSet id="9" author="umgmt">
         <addForeignKeyConstraint baseColumnNames="ROLE_ID" baseTableName="UMGMT_ENTITY_ATTRIBUTE_POLICY"
                                  constraintName="FK_UMGMTENTITYATTRIBUT_ON_ROLE" referencedColumnNames="ID"
                                  referencedTableName="UMGMT_RESOURCE_ROLE"/>
     </changeSet>
-    <changeSet id="8" author="umgmt">
+    <changeSet id="10" author="umgmt">
+        <addForeignKeyConstraint baseColumnNames="ROLE_ID" baseTableName="UMGMT_ROW_LEVEL_POLICY"
+                                 constraintName="FK_UMGMTROWLEVELPOLICY_ON_ROLE" referencedColumnNames="ID"
+                                 referencedTableName="UMGMT_ROW_LEVEL_ROLE"/>
+    </changeSet>
+    <changeSet id="11" author="umgmt">
         <addForeignKeyConstraint baseColumnNames="ROLE_ID" baseTableName="UMGMT_SPECIFIC_POLICY"
                                  constraintName="FK_UMGMTSPECIFICPOLICY_ON_ROLE" referencedColumnNames="ID"
                                  referencedTableName="UMGMT_RESOURCE_ROLE"/>
     </changeSet>
-    <changeSet id="9" author="umgmt">
+    <changeSet id="12" author="umgmt">
         <addForeignKeyConstraint baseColumnNames="ROLE_ID" baseTableName="UMGMT_ENTITY_POLICY"
                                  constraintName="FK_UMGMT_ENTITY_POLICY_ON_ROLE" referencedColumnNames="ID"
                                  referencedTableName="UMGMT_RESOURCE_ROLE"/>
     </changeSet>
-    <changeSet id="10" author="umgmt">
+    <changeSet id="13" author="umgmt">
         <addForeignKeyConstraint baseColumnNames="ROLE_ID" baseTableName="UMGMT_MENU_POLICY"
                                  constraintName="FK_UMGMT_MENU_POLICY_ON_ROLE" referencedColumnNames="ID"
                                  referencedTableName="UMGMT_RESOURCE_ROLE"/>
     </changeSet>
-    <changeSet id="11" author="umgmt">
+    <changeSet id="14" author="umgmt">
         <addForeignKeyConstraint baseColumnNames="ROLE_ID" baseTableName="UMGMT_Screen_POLICY"
                                  constraintName="FK_UMGMT_SCREEN_POLICY_ON_ROLE" referencedColumnNames="ID"
                                  referencedTableName="UMGMT_RESOURCE_ROLE"/>

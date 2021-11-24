@@ -50,8 +50,7 @@ public class ResourceRole implements Serializable {
 
     @Id
     @Column(name = "ID")
-    @JmixGeneratedValue
-    private UUID id;
+    private String id;
 
     @Version
     @Column(name = "VERSION", nullable = false)
@@ -101,11 +100,11 @@ public class ResourceRole implements Serializable {
     @Convert(converter = StringCollectionConverter.class)
     private Set<String> scopes;
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
