@@ -6,6 +6,8 @@ import io.jmix.graphql.loader.GraphQLEntityDataFetcher;
 import io.jmix.graphql.loader.GraphQLEntityDataFetcherContext;
 import io.jmix.graphql.loader.GraphQLEntityListDataFetcher;
 import io.jmix.graphql.loader.GraphQLEntityListDataFetcherContext;
+import io.jmix.graphql.modifier.GraphQLUpsertEntityDataFetcher;
+import io.jmix.graphql.modifier.GraphQLUpsertEntityDataFetcherContext;
 import io.jmix.security.role.RowLevelRoleRepository;
 import io.jmix.securitydata.entity.RowLevelRoleEntity;
 import io.jmix.usermgmt.entity.RowLevelRole;
@@ -23,7 +25,8 @@ import java.util.stream.Stream;
 
 @Component
 public class RowLevelRoleController implements GraphQLEntityListDataFetcher<RowLevelRole>,
-        GraphQLEntityDataFetcher<RowLevelRole> {
+        GraphQLEntityDataFetcher<RowLevelRole>,
+        GraphQLUpsertEntityDataFetcher<RowLevelRole> {
 
     @Autowired
     protected RowLevelRoleRepository roleRepository;
@@ -33,6 +36,10 @@ public class RowLevelRoleController implements GraphQLEntityListDataFetcher<RowL
     protected RowLevelPolicyMapper rowLevelPolicyMapper;
     @Autowired
     protected DataManager dataManager;
+    @Autowired
+    protected EntityUpdateManager entityUpdateManager;
+    @Autowired
+    protected ImportPlanBuilder importPlanBuilder;
 
     @Override
     public RowLevelRole loadEntity(GraphQLEntityDataFetcherContext<RowLevelRole> context) {
@@ -77,6 +84,21 @@ public class RowLevelRoleController implements GraphQLEntityListDataFetcher<RowL
         return stream.collect(Collectors.toList());
     }
 
+    @Override
+    public RowLevelRole importEntities(GraphQLUpsertEntityDataFetcherContext<RowLevelRole> context) {
+        RowLevelRole entity = context.getEntities().get(0);
+        EntityImportPlan entityImportPlan = importPlanBuilder.buildRowLevelImportPlan(context.getEntityImportPlan());
+
+        RowLevelRoleEntity resultEntity = (RowLevelRoleEntity) entityUpdateManager.updateEntity(mapFromDto(entity), entityImportPlan);
+
+        if (resultEntity != null) {
+            io.jmix.security.model.RowLevelRole resultRole = roleRepository.findRoleByCode(resultEntity.getCode());
+            return resultRole == null ? null : mapRoleToDtoForLoadingById(resultRole);
+        }
+
+        return null;
+    }
+
     @Nullable
     private UUID getUUID(String value) {
         try {
@@ -113,6 +135,16 @@ public class RowLevelRoleController implements GraphQLEntityListDataFetcher<RowL
 
         dst.setRowLevelPolicies(src.getRowLevelPolicies().stream()
                 .map(rowLevelPolicyMapper::mapToDto)
+                .collect(Collectors.toList()));
+
+        return dst;
+    }
+
+    private RowLevelRoleEntity mapFromDto(RowLevelRole src) {
+        RowLevelRoleEntity dst = rowLevelRoleMapper.mapFromDto(src);
+
+        dst.setRowLevelPolicies(src.getRowLevelPolicies().stream()
+                .map(rowLevelPolicyMapper::mapFromDto)
                 .collect(Collectors.toList()));
 
         return dst;
