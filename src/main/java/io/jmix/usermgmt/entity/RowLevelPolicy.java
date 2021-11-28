@@ -144,6 +144,6 @@ public class RowLevelPolicy implements Serializable {
 
     @InstanceName
     public String getInstanceName(Messages messages) {
-        return entityName + ":" + messages.getMessage(getType());
+        return entityName + ":" + messages.getMessage(getAction());
     }
 }

@@ -1,6 +1,7 @@
 package io.jmix.usermgmt.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.*;
@@ -59,5 +60,10 @@ public class MenuPolicy {
 
     public void setRole(ResourceRole role) {
         this.role = role;
+    }
+
+    @InstanceName
+    public String getInstanceName() {
+        return resource;
     }
 }

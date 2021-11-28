@@ -1,7 +1,11 @@
 package io.jmix.usermgmt.mapper;
 
 import io.jmix.core.Metadata;
+import io.jmix.security.model.EntityPolicyAction;
 import io.jmix.security.model.ResourcePolicy;
+import io.jmix.security.model.ResourcePolicyEffect;
+import io.jmix.security.model.ResourcePolicyType;
+import io.jmix.securitydata.entity.ResourcePolicyEntity;
 import io.jmix.usermgmt.entity.EntityPolicy;
 import io.jmix.usermgmt.entity.EntityPolicyType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +30,20 @@ public class EntityPolicyMapper extends BasePolicyMapper {
 
     private EntityPolicyType getEntityPolicyType(String action) {
         return EntityPolicyType.fromId(action);
+    }
+
+    public ResourcePolicyEntity mapFromDto(EntityPolicy src) {
+        ResourcePolicyEntity dst = metadata.create(ResourcePolicyEntity.class);
+
+        if (src.getId() != null) {
+            dst.setId(src.getId());
+        }
+
+        dst.setResource(src.getEntityName());
+        dst.setType(ResourcePolicyType.ENTITY);
+        dst.setAction(src.getAction().getId());
+        dst.setEffect(ResourcePolicyEffect.ALLOW);
+
+        return dst;
     }
 }

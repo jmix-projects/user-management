@@ -6,9 +6,12 @@ import io.jmix.graphql.loader.GraphQLEntityDataFetcher;
 import io.jmix.graphql.loader.GraphQLEntityDataFetcherContext;
 import io.jmix.graphql.loader.GraphQLEntityListDataFetcher;
 import io.jmix.graphql.loader.GraphQLEntityListDataFetcherContext;
+import io.jmix.graphql.modifier.GraphQLUpsertEntityDataFetcher;
+import io.jmix.graphql.modifier.GraphQLUpsertEntityDataFetcherContext;
 import io.jmix.security.model.ResourcePolicy;
 import io.jmix.security.model.ResourcePolicyType;
 import io.jmix.security.role.ResourceRoleRepository;
+import io.jmix.securitydata.entity.ResourcePolicyEntity;
 import io.jmix.securitydata.entity.ResourceRoleEntity;
 import io.jmix.usermgmt.entity.ResourceRole;
 import io.jmix.usermgmt.mapper.*;
@@ -17,16 +20,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Nullable;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
 public class ResourceRoleController implements GraphQLEntityListDataFetcher<ResourceRole>,
-        GraphQLEntityDataFetcher<ResourceRole> {
+        GraphQLEntityDataFetcher<ResourceRole>,
+        GraphQLUpsertEntityDataFetcher<ResourceRole> {
 
     @Autowired
     protected ResourceRoleRepository roleRepository;
@@ -44,6 +45,10 @@ public class ResourceRoleController implements GraphQLEntityListDataFetcher<Reso
     protected MenuPolicyMapper menuPolicyMapper;
     @Autowired
     protected DataManager dataManager;
+    @Autowired
+    protected EntityUpdateManager entityUpdateManager;
+    @Autowired
+    protected ImportPlanBuilder importPlanBuilder;
 
     @Override
     public ResourceRole loadEntity(GraphQLEntityDataFetcherContext<ResourceRole> context) {
@@ -86,6 +91,21 @@ public class ResourceRoleController implements GraphQLEntityListDataFetcher<Reso
         }
 
         return stream.collect(Collectors.toList());
+    }
+
+    @Override
+    public ResourceRole importEntities(GraphQLUpsertEntityDataFetcherContext<ResourceRole> context) {
+        ResourceRole entity = context.getEntities().get(0);
+        EntityImportPlan entityImportPlan = importPlanBuilder.buildResourceImportPlan(context.getEntityImportPlan());
+
+        ResourceRoleEntity resultEntity = (ResourceRoleEntity) entityUpdateManager.updateEntity(mapFromDto(entity), entityImportPlan);
+
+        if (resultEntity != null) {
+            io.jmix.security.model.ResourceRole resultRole = roleRepository.findRoleByCode(resultEntity.getCode());
+            return resultRole == null ? null : mapRoleToDtoForLoadingById(resultRole);
+        }
+
+        return null;
     }
 
     @Nullable
@@ -168,5 +188,35 @@ public class ResourceRoleController implements GraphQLEntityListDataFetcher<Reso
     private Stream<ResourcePolicy> getMenuResourcePolicies(Collection<ResourcePolicy> policies) {
         return policies.stream().
                 filter(resourcePolicy -> StringUtils.startsWith(resourcePolicy.getResource(), "frontend_menu:"));
+    }
+
+    private ResourceRoleEntity mapFromDto(ResourceRole src) {
+        ResourceRoleEntity dst = resourceRoleMapper.mapFromDto(src);
+
+        List<ResourcePolicyEntity> dstPolicies = new ArrayList<>();
+
+        dstPolicies.addAll(src.getEntityPolicies().stream()
+                .map(entityPolicyMapper::mapFromDto)
+                .collect(Collectors.toList()));
+
+        dstPolicies.addAll(src.getEntityAttributePolicies().stream()
+                .map(attributePolicyMapper::mapFromDto)
+                .collect(Collectors.toList()));
+
+        dstPolicies.addAll(src.getScreenPolicies().stream()
+                .map(screenPolicyMapper::mapFromDto)
+                .collect(Collectors.toList()));
+
+        dstPolicies.addAll(src.getMenuPolicies().stream()
+                .map(menuPolicyMapper::mapFromDto)
+                .collect(Collectors.toList()));
+
+        dstPolicies.addAll(src.getSpecificPolicies().stream()
+                .map(specificPolicyMapper::mapFromDto)
+                .collect(Collectors.toList()));
+
+        dst.setResourcePolicies(dstPolicies);
+
+        return dst;
     }
 }
