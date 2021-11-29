@@ -19,7 +19,7 @@ public class MenuPolicyMapper extends BasePolicyMapper {
         MenuPolicy dst = metadata.create(MenuPolicy.class);
 
         dst.setId(getPolicyIdForDto(src));
-        dst.setResource(getMenu(src.getResource()));
+        dst.setResource(src.getResource());
 
         //TODO: set version
 
@@ -33,21 +33,11 @@ public class MenuPolicyMapper extends BasePolicyMapper {
             dst.setId(src.getId());
         }
 
-        dst.setResource("frontend_menu:" + src.getResource());
-        dst.setType("custom");
+        dst.setResource(src.getResource());
+        dst.setType("frontend_menu");
         dst.setAction(ResourcePolicy.DEFAULT_ACTION);
         dst.setEffect(ResourcePolicyEffect.ALLOW);
 
         return dst;
-    }
-
-    private String getMenu(String resource) {
-        if (Strings.isNullOrEmpty(resource)) {
-            return resource;
-        }
-        if (StringUtils.startsWith("frontend_menu:", resource)) {
-            return resource.substring(14);
-        }
-        return resource;
     }
 }

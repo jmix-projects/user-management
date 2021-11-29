@@ -182,12 +182,12 @@ public class ResourceRoleController implements GraphQLEntityListDataFetcher<Reso
 
     private Stream<ResourcePolicy> getScreenResourcePolicies(Collection<ResourcePolicy> policies) {
         return policies.stream().
-                filter(resourcePolicy -> StringUtils.startsWith(resourcePolicy.getResource(), "frontend_screen:"));
+                filter(resourcePolicy -> "frontend_screen".equals(resourcePolicy.getType()));
     }
 
     private Stream<ResourcePolicy> getMenuResourcePolicies(Collection<ResourcePolicy> policies) {
         return policies.stream().
-                filter(resourcePolicy -> StringUtils.startsWith(resourcePolicy.getResource(), "frontend_menu:"));
+                filter(resourcePolicy -> "frontend_menu".equals(resourcePolicy.getType()));
     }
 
     private ResourceRoleEntity mapFromDto(ResourceRole src) {

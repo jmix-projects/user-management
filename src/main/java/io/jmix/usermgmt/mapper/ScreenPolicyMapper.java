@@ -19,7 +19,7 @@ public class ScreenPolicyMapper extends BasePolicyMapper {
         ScreenPolicy dst = metadata.create(ScreenPolicy.class);
 
         dst.setId(getPolicyIdForDto(src));
-        dst.setResource(getScreen(src.getResource()));
+        dst.setResource(src.getResource());
 
         //TODO: set version
 
@@ -33,21 +33,11 @@ public class ScreenPolicyMapper extends BasePolicyMapper {
             dst.setId(src.getId());
         }
 
-        dst.setResource("frontend_screen:" + src.getResource());
-        dst.setType("custom");
+        dst.setResource(src.getResource());
+        dst.setType("frontend_screen");
         dst.setAction(ResourcePolicy.DEFAULT_ACTION);
         dst.setEffect(ResourcePolicyEffect.ALLOW);
 
         return dst;
-    }
-
-    private String getScreen(String resource) {
-        if (Strings.isNullOrEmpty(resource)) {
-            return resource;
-        }
-        if (StringUtils.startsWith("frontend_screen:", resource)) {
-            return resource.substring(16);
-        }
-        return resource;
     }
 }
