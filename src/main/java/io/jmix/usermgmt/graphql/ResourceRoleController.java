@@ -15,7 +15,6 @@ import io.jmix.securitydata.entity.ResourcePolicyEntity;
 import io.jmix.securitydata.entity.ResourceRoleEntity;
 import io.jmix.usermgmt.entity.ResourceRole;
 import io.jmix.usermgmt.mapper.*;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
