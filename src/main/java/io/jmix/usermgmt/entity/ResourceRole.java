@@ -17,29 +17,18 @@
 package io.jmix.usermgmt.entity;
 
 import io.jmix.core.DeletePolicy;
-import io.jmix.core.annotation.DeletedBy;
-import io.jmix.core.annotation.DeletedDate;
-import io.jmix.core.annotation.TenantId;
-import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.OnDelete;
 import io.jmix.core.entity.annotation.SystemLevel;
 import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
-import io.jmix.securitydata.entity.ResourcePolicyEntity;
 import io.jmix.securitydata.entity.StringCollectionConverter;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 @Table(name = "UMGMT_RESOURCE_ROLE")
 @Entity(name = "umgmt_ResourceRole")
@@ -49,8 +38,11 @@ public class ResourceRole implements Serializable {
     private static final long serialVersionUID = -1587602133446436634L;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private String id;
+
+    @Column(name = "READ_ONLY")
+    private Boolean readOnly;
 
     @Version
     @Column(name = "VERSION", nullable = false)
@@ -94,11 +86,35 @@ public class ResourceRole implements Serializable {
     @Lob
     @Column(name = "CHILD_ROLES")
     @Convert(converter = StringCollectionConverter.class)
-    private Set<String> childRoles;
+    private String childRoles;
 
     @Column(name = "SCOPES")
     @Convert(converter = StringCollectionConverter.class)
     private Set<String> scopes;
+
+    public void setChildRoles(String childRoles) {
+        this.childRoles = childRoles;
+    }
+
+    public String getChildRoles() {
+        return childRoles;
+    }
+
+    public void setScopes(Set<String> scopes) {
+        this.scopes = scopes;
+    }
+
+    public Set<String> getScopes() {
+        return scopes;
+    }
+
+    public Boolean getReadOnly() {
+        return readOnly;
+    }
+
+    public void setReadOnly(Boolean readOnly) {
+        this.readOnly = readOnly;
+    }
 
     public String getId() {
         return id;
@@ -114,22 +130,6 @@ public class ResourceRole implements Serializable {
 
     public void setVersion(Integer version) {
         this.version = version;
-    }
-
-    public Set<String> getChildRoles() {
-        return childRoles;
-    }
-
-    public void setChildRoles(Set<String> childRoles) {
-        this.childRoles = childRoles;
-    }
-
-    public Set<String> getScopes() {
-        return scopes;
-    }
-
-    public void setScopes(Set<String> scopes) {
-        this.scopes = scopes;
     }
 
     public String getCode() {

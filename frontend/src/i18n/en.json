@@ -1,4 +1,5 @@
 {
+  "screen.UserCards": "User Cards",
   "screen.ResourceRoleList": "Resource Role List",
   "screen.ResourceRoleEditor": "Resource Role Editor",
   "screen.SpecificPolicyList": "Specific Policy List",

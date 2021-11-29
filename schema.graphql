@@ -516,9 +516,10 @@ type umgmt_ResourceRole {
     description: String
     entityAttributePolicies: [umgmt_EntityAttributePolicy]
     entityPolicies: [umgmt_EntityPolicy]
-    id: UUID
+    id: String
     menuPolicies: [umgmt_MenuPolicy]
     name: String
+    readOnly: Boolean
     scopes: String
     screenPolicies: [umgmt_ScreenPolicy]
     specificPolicies: [umgmt_SpecificPolicy]
@@ -543,7 +544,7 @@ type umgmt_RowLevelRole {
     childRoles: String
     code: String
     description: String
-    id: UUID
+    id: String
     name: String
     rowLevelPolicies: [umgmt_RowLevelPolicy]
     version: Int
@@ -1550,9 +1551,10 @@ input inp_umgmt_ResourceRole {
     description: String
     entityAttributePolicies: [inp_umgmt_EntityAttributePolicy]
     entityPolicies: [inp_umgmt_EntityPolicy]
-    id: UUID
+    id: String
     menuPolicies: [inp_umgmt_MenuPolicy]
     name: String
+    readOnly: Boolean
     scopes: String
     screenPolicies: [inp_umgmt_ScreenPolicy]
     specificPolicies: [inp_umgmt_SpecificPolicy]
@@ -1567,8 +1569,9 @@ input inp_umgmt_ResourceRoleFilterCondition {
     childRoles: [inp_StringFilterCondition]
     code: [inp_StringFilterCondition]
     description: [inp_StringFilterCondition]
-    id: [inp_UUIDFilterCondition]
+    id: [inp_StringFilterCondition]
     name: [inp_StringFilterCondition]
+    readOnly: [inp_BooleanFilterCondition]
     scopes: [inp_StringFilterCondition]
     version: [inp_IntFilterCondition]
 }
@@ -1577,8 +1580,9 @@ input inp_umgmt_ResourceRoleOrderBy {
     childRoles: [SortOrder]
     code: [SortOrder]
     description: [SortOrder]
-    id: SortOrder
+    id: [SortOrder]
     name: [SortOrder]
+    readOnly: SortOrder
     scopes: [SortOrder]
     version: SortOrder
 }
@@ -1627,7 +1631,7 @@ input inp_umgmt_RowLevelRole {
     childRoles: String
     code: String
     description: String
-    id: UUID
+    id: String
     name: String
     rowLevelPolicies: [inp_umgmt_RowLevelPolicy]
     version: Int
@@ -1641,7 +1645,7 @@ input inp_umgmt_RowLevelRoleFilterCondition {
     childRoles: [inp_StringFilterCondition]
     code: [inp_StringFilterCondition]
     description: [inp_StringFilterCondition]
-    id: [inp_UUIDFilterCondition]
+    id: [inp_StringFilterCondition]
     name: [inp_StringFilterCondition]
     version: [inp_IntFilterCondition]
 }
@@ -1650,7 +1654,7 @@ input inp_umgmt_RowLevelRoleOrderBy {
     childRoles: [SortOrder]
     code: [SortOrder]
     description: [SortOrder]
-    id: SortOrder
+    id: [SortOrder]
     name: [SortOrder]
     version: SortOrder
 }

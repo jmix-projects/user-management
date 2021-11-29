@@ -234,14 +234,27 @@
         {
           "name": "id",
           "type": {
-            "packageName": "java.util",
-            "className": "UUID",
-            "fqn": "java.util.UUID",
-            "label": "UUID"
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
           },
           "mappingType": "DATATYPE",
           "readOnly": false,
           "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "readOnly",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Boolean",
+            "fqn": "java.lang.Boolean",
+            "label": "Boolean"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": false,
           "transient": false
         },
         {
@@ -535,10 +548,10 @@
         {
           "name": "id",
           "type": {
-            "packageName": "java.util",
-            "className": "UUID",
-            "fqn": "java.util.UUID",
-            "label": "UUID"
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
           },
           "mappingType": "DATATYPE",
           "readOnly": false,

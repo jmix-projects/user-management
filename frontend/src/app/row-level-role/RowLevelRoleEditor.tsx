@@ -70,6 +70,7 @@ const RowLevelRoleEditor = observer(
     const [form] = useForm();
     const onSubmitFailed = useSubmitFailedCallback();
     const {
+      item,
       executeLoadQuery,
       loadQueryResult: { loading: queryLoading, error: queryError },
       upsertMutationResult: { loading: upsertLoading },

@@ -37,6 +37,7 @@ const LOAD_UMGMT_RESOURCEROLE = gql`
       childRoles
       code
       description
+      readOnly
       entityAttributePolicies {
         id
         _instanceName
@@ -89,6 +90,7 @@ const ResourceRoleEditor = observer(
     const [form] = useForm();
     const onSubmitFailed = useSubmitFailedCallback();
     const {
+      item,
       executeLoadQuery,
       loadQueryResult: { loading: queryLoading, error: queryError },
       upsertMutationResult: { loading: upsertLoading },
@@ -137,6 +139,7 @@ const ResourceRoleEditor = observer(
               style: { marginBottom: "12px" },
               rules: [{ required: true }]
             }}
+            disabled={item?.readOnly === true}
           />
 
           <Field
@@ -146,6 +149,7 @@ const ResourceRoleEditor = observer(
               style: { marginBottom: "12px" },
               rules: [{ required: true }]
             }}
+            disabled={item?.readOnly === true}
           />
 
           <TextArea
@@ -154,6 +158,7 @@ const ResourceRoleEditor = observer(
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
+            disabled={item?.readOnly === true}
           />
 
           <Field
@@ -162,6 +167,7 @@ const ResourceRoleEditor = observer(
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
+            disabled={item?.readOnly === true}
           />
 
           <Field
@@ -170,6 +176,7 @@ const ResourceRoleEditor = observer(
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
+            disabled={item?.readOnly === true}
           />
 
           <Field
@@ -178,6 +185,7 @@ const ResourceRoleEditor = observer(
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
+            disabled={item?.readOnly === true}
           />
 
           <Field
@@ -186,6 +194,7 @@ const ResourceRoleEditor = observer(
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
+            disabled={item?.readOnly === true}
           />
 
           <Field
@@ -194,6 +203,7 @@ const ResourceRoleEditor = observer(
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
+            disabled={item?.readOnly === true}
           />
 
           <GlobalErrorsAlert serverValidationErrors={serverValidationErrors} />
@@ -203,7 +213,7 @@ const ResourceRoleEditor = observer(
               <Button htmlType="button" onClick={handleCancelBtnClick}>
                 <FormattedMessage id="common.cancel" />
               </Button>
-              <Button type="primary" htmlType="submit" loading={upsertLoading}>
+              <Button type="primary" htmlType="submit" loading={upsertLoading} disabled={item?.readOnly === true}>
                 <FormattedMessage id={submitBtnCaption} />
               </Button>
             </Space>

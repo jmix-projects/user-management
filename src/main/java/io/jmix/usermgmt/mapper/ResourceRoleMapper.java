@@ -24,6 +24,7 @@ public class ResourceRoleMapper {
         dst.setName(src.getName());
         dst.setDescription(src.getDescription());
         dst.setScopes(src.getScopes());
+        dst.setReadOnly(isReadOnly(src));
 
         return dst;
     }
@@ -31,6 +32,7 @@ public class ResourceRoleMapper {
     private String getRoleIdForDto(io.jmix.security.model.ResourceRole src) {
         Map<String, String> customProperties = src.getCustomProperties();
         String roleId = null;
+        //noinspection ConstantConditions
         if (customProperties != null) {
             String databaseId = customProperties.get("databaseId");
             if (databaseId != null) {
@@ -41,6 +43,18 @@ public class ResourceRoleMapper {
             roleId = src.getCode();
         }
         return roleId;
+    }
+
+    public boolean isReadOnly(io.jmix.security.model.ResourceRole src) {
+        Map<String, String> customProperties = src.getCustomProperties();
+        //noinspection ConstantConditions
+        if (customProperties != null) {
+            String databaseId = customProperties.get("databaseId");
+            if (databaseId != null) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public ResourceRoleEntity mapFromDto(ResourceRole src) {
@@ -54,4 +68,5 @@ public class ResourceRoleMapper {
 
         return dst;
     }
+
 }
