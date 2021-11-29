@@ -25,6 +25,9 @@ public class MenuPolicy {
     @Column(name = "RESOURCE", nullable = false)
     private String resource;
 
+    @Column(name = "READ_ONLY")
+    private Boolean readOnly;
+
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ROLE_ID")
@@ -52,6 +55,14 @@ public class MenuPolicy {
 
     public void setResource(String resource) {
         this.resource = resource;
+    }
+
+    public Boolean getReadOnly() {
+        return readOnly;
+    }
+
+    public void setReadOnly(Boolean readOnly) {
+        this.readOnly = readOnly;
     }
 
     public ResourceRole getRole() {

@@ -17,7 +17,6 @@
 package io.jmix.usermgmt.entity;
 
 import io.jmix.core.DeletePolicy;
-import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.OnDelete;
 import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.InstanceName;
@@ -29,7 +28,6 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 @Table(name = "UMGMT_ROW_LEVEL_ROLE")
 @Entity(name = "umgmt_RowLevelRole")
@@ -54,6 +52,9 @@ public class RowLevelRole implements Serializable {
 
     @Column(name = "DESCRIPTION")
     private String description;
+
+    @Column(name = "READ_ONLY")
+    private Boolean readOnly;
 
     @Composition
     @OnDelete(DeletePolicy.CASCADE)
@@ -119,5 +120,13 @@ public class RowLevelRole implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getReadOnly() {
+        return readOnly;
+    }
+
+    public void setReadOnly(Boolean readOnly) {
+        this.readOnly = readOnly;
     }
 }

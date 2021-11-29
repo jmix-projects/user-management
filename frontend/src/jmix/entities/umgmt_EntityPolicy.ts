@@ -6,11 +6,12 @@ export class EntityPolicy {
   version?: number | null;
   entityName?: string | null;
   action?: EntityPolicyType | null;
+  readOnly?: boolean | null;
   role?: ResourceRole | null;
 }
 export type EntityPolicyViewName = "_base" | "_instance_name" | "_local";
 export type EntityPolicyView<V extends EntityPolicyViewName> = V extends "_base"
-  ? Pick<EntityPolicy, "id" | "version" | "entityName" | "action">
+  ? Pick<EntityPolicy, "id" | "version" | "entityName" | "action" | "readOnly">
   : V extends "_local"
-  ? Pick<EntityPolicy, "id" | "version" | "entityName" | "action">
+  ? Pick<EntityPolicy, "id" | "version" | "entityName" | "action" | "readOnly">
   : never;

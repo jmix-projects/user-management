@@ -33,6 +33,9 @@ public class EntityAttributePolicy {
     @Column(name = "ACTION_")
     private String action;
 
+    @Column(name = "READ_ONLY")
+    private Boolean readOnly;
+
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ROLE_ID")
@@ -84,6 +87,14 @@ public class EntityAttributePolicy {
 
     public void setRole(ResourceRole role) {
         this.role = role;
+    }
+
+    public Boolean getReadOnly() {
+        return readOnly;
+    }
+
+    public void setReadOnly(Boolean readOnly) {
+        this.readOnly = readOnly;
     }
 
     @InstanceName

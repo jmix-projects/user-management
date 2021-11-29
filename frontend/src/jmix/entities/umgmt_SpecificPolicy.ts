@@ -4,13 +4,14 @@ export class SpecificPolicy {
   id?: string;
   version?: number | null;
   resource?: string | null;
+  readOnly?: boolean | null;
   role?: ResourceRole | null;
 }
 export type SpecificPolicyViewName = "_base" | "_instance_name" | "_local";
 export type SpecificPolicyView<
   V extends SpecificPolicyViewName
 > = V extends "_base"
-  ? Pick<SpecificPolicy, "id" | "version" | "resource">
+  ? Pick<SpecificPolicy, "id" | "version" | "resource" | "readOnly">
   : V extends "_local"
-  ? Pick<SpecificPolicy, "id" | "version" | "resource">
+  ? Pick<SpecificPolicy, "id" | "version" | "resource" | "readOnly">
   : never;

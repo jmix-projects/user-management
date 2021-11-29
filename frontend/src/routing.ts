@@ -1,3 +1,5 @@
+import "./app/user-role-assignments/UserRoleAssignmentsList";
+import "./app/user-role-assignments/UserRoleAssignmentsEditor";
 import "./app/resource-role/ResourceRoleList";
 import "./app/resource-role/ResourceRoleEditor";
 import "./app/specific-policy/SpecificPolicyList";

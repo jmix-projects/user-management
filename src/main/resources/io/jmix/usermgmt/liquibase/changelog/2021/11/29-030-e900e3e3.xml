@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="umgmt">
+        <createTable tableName="UMGMT_ASSGN_RES_ROLE_LINK">
+            <column name="RESOURCE_ROLE_ID" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_UMGMT_ASSGN_RES_ROLE_LINK"/>
+            </column>
+            <column name="USER_ROLE_ASSGN_ID" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_UMGMT_ASSGN_RES_ROLE_LINK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="umgmt">
+        <createTable tableName="UMGMT_ASSGN_RL_ROLE_LINK">
+            <column name="ROW_LEVEL_ROLE_ID" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_UMGMT_ASSGN_RL_ROLE_LINK"/>
+            </column>
+            <column name="USER_ROLE_ASSGN_ID" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_UMGMT_ASSGN_RL_ROLE_LINK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="umgmt">
+        <createTable tableName="UMGMT_USER_ROLE_ASSIGNMENTS">
+            <column name="ID" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_UMGMT_USER_ROLE_ASSIGNMENTS"/>
+            </column>
+            <column name="UUID" type="${uuid.type}"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="umgmt">
+        <addColumn tableName="UMGMT_ENTITY_ATTRIBUTE_POLICY">
+            <column name="READ_ONLY" type="BOOLEAN"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="5" author="umgmt">
+        <addColumn tableName="UMGMT_ENTITY_POLICY">
+            <column name="READ_ONLY" type="BOOLEAN"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="6" author="umgmt">
+        <addColumn tableName="UMGMT_MENU_POLICY">
+            <column name="READ_ONLY" type="BOOLEAN"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="7" author="umgmt">
+        <addColumn tableName="UMGMT_ROW_LEVEL_POLICY">
+            <column name="READ_ONLY" type="BOOLEAN"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="8" author="umgmt">
+        <addColumn tableName="UMGMT_ROW_LEVEL_ROLE">
+            <column name="READ_ONLY" type="BOOLEAN"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="9" author="umgmt">
+        <addColumn tableName="UMGMT_SPECIFIC_POLICY">
+            <column name="READ_ONLY" type="BOOLEAN"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="10" author="umgmt">
+        <addColumn tableName="UMGMT_Screen_POLICY">
+            <column name="READ_ONLY" type="BOOLEAN"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="11" author="umgmt">
+        <addForeignKeyConstraint baseColumnNames="RESOURCE_ROLE_ID" baseTableName="UMGMT_ASSGN_RES_ROLE_LINK"
+                                 constraintName="FK_UMGASSRESRO_ON_RESOURCEROL" referencedColumnNames="ID"
+                                 referencedTableName="UMGMT_RESOURCE_ROLE"/>
+    </changeSet>
+    <changeSet id="12" author="umgmt">
+        <addForeignKeyConstraint baseColumnNames="USER_ROLE_ASSGN_ID" baseTableName="UMGMT_ASSGN_RES_ROLE_LINK"
+                                 constraintName="FK_UMGASSRESRO_ON_USERROLEASS" referencedColumnNames="ID"
+                                 referencedTableName="UMGMT_USER_ROLE_ASSIGNMENTS"/>
+    </changeSet>
+    <changeSet id="13" author="umgmt">
+        <addForeignKeyConstraint baseColumnNames="ROW_LEVEL_ROLE_ID" baseTableName="UMGMT_ASSGN_RL_ROLE_LINK"
+                                 constraintName="FK_UMGASSRLROL_ON_ROWLEVELROLE" referencedColumnNames="ID"
+                                 referencedTableName="UMGMT_ROW_LEVEL_ROLE"/>
+    </changeSet>
+    <changeSet id="14" author="umgmt">
+        <addForeignKeyConstraint baseColumnNames="USER_ROLE_ASSGN_ID" baseTableName="UMGMT_ASSGN_RL_ROLE_LINK"
+                                 constraintName="FK_UMGASSRLROL_ON_USERROLEASSI" referencedColumnNames="ID"
+                                 referencedTableName="UMGMT_USER_ROLE_ASSIGNMENTS"/>
+    </changeSet>
+</databaseChangeLog>

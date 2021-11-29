@@ -1,4 +1,6 @@
 {
+  "screen.UserRoleAssignmentsList": "Users Assignments",
+  "screen.UserRoleAssignmentsEditor": "User Assignments",
   "screen.UserCards": "User Cards",
   "screen.ResourceRoleList": "Resource Role List",
   "screen.ResourceRoleEditor": "Resource Role Editor",

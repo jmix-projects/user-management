@@ -10,6 +10,7 @@ export class RowLevelPolicy {
   whereClause?: string | null;
   joinClause?: string | null;
   script?: string | null;
+  readOnly?: boolean | null;
   role?: RowLevelRole | null;
 }
 export type RowLevelPolicyViewName = "_base" | "_instance_name" | "_local";
@@ -26,6 +27,7 @@ export type RowLevelPolicyView<
       | "whereClause"
       | "joinClause"
       | "script"
+      | "readOnly"
     >
   : V extends "_local"
   ? Pick<
@@ -38,5 +40,6 @@ export type RowLevelPolicyView<
       | "whereClause"
       | "joinClause"
       | "script"
+      | "readOnly"
     >
   : never;

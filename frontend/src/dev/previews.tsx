@@ -1,4 +1,6 @@
 import React from "react";
+import UserRoleAssignmentsList from "../app/user-role-assignments/UserRoleAssignmentsList";
+import UserRoleAssignmentsEditor from "../app/user-role-assignments/UserRoleAssignmentsEditor";
 import ResourceRoleList from "../app/resource-role/ResourceRoleList";
 import ResourceRoleEditor from "../app/resource-role/ResourceRoleEditor";
 import SpecificPolicyList from "../app/specific-policy/SpecificPolicyList";
@@ -67,6 +69,12 @@ export const ComponentPreviews = () => {
       </ComponentPreview>
       <ComponentPreview path="/ResourceRoleList">
         <ResourceRoleList />
+      </ComponentPreview>
+      <ComponentPreview path="/UserRoleAssignmentsEditor">
+        <UserRoleAssignmentsEditor />
+      </ComponentPreview>
+      <ComponentPreview path="/UserRoleAssignmentsList">
+        <UserRoleAssignmentsList />
       </ComponentPreview>
     </Previews>
   );

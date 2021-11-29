@@ -65,6 +65,9 @@ public class RowLevelPolicy implements Serializable {
     @Column(name = "SCRIPT_", length = 5000)
     private String script;
 
+    @Column(name = "READ_ONLY")
+    private Boolean readOnly;
+
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ROLE_ID")
@@ -140,6 +143,14 @@ public class RowLevelPolicy implements Serializable {
 
     public void setScript(String script) {
         this.script = script;
+    }
+
+    public Boolean getReadOnly() {
+        return readOnly;
+    }
+
+    public void setReadOnly(Boolean readOnly) {
+        this.readOnly = readOnly;
     }
 
     @InstanceName

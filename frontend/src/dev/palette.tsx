@@ -11,6 +11,8 @@ import {
   Row,
   Space
 } from "antd";
+import UserRoleAssignmentsList from "../app/user-role-assignments/UserRoleAssignmentsList";
+import UserRoleAssignmentsEditor from "../app/user-role-assignments/UserRoleAssignmentsEditor";
 import ResourceRoleList from "../app/resource-role/ResourceRoleList";
 import ResourceRoleEditor from "../app/resource-role/ResourceRoleEditor";
 import SpecificPolicyList from "../app/specific-policy/SpecificPolicyList";
@@ -224,6 +226,16 @@ const palette = () => (
       <Component name="ResourceRoleList">
         <Variant>
           <ResourceRoleList />
+        </Variant>
+      </Component>
+      <Component name="UserRoleAssignmentsEditor">
+        <Variant>
+          <UserRoleAssignmentsEditor />
+        </Variant>
+      </Component>
+      <Component name="UserRoleAssignmentsList">
+        <Variant>
+          <UserRoleAssignmentsList />
         </Variant>
       </Component>
     </Category>

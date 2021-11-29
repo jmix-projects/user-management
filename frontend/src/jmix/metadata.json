@@ -72,6 +72,19 @@
           "transient": false
         },
         {
+          "name": "readOnly",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Boolean",
+            "fqn": "java.lang.Boolean",
+            "label": "Boolean"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
           "name": "role",
           "type": {
             "packageName": "io.jmix.usermgmt.entity",
@@ -147,6 +160,19 @@
           "transient": false
         },
         {
+          "name": "readOnly",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Boolean",
+            "fqn": "java.lang.Boolean",
+            "label": "Boolean"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
           "name": "role",
           "type": {
             "packageName": "io.jmix.usermgmt.entity",
@@ -206,6 +232,19 @@
           "mappingType": "DATATYPE",
           "readOnly": false,
           "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "readOnly",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Boolean",
+            "fqn": "java.lang.Boolean",
+            "label": "Boolean"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": false,
           "transient": false
         },
         {
@@ -523,6 +562,19 @@
           "transient": false
         },
         {
+          "name": "readOnly",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Boolean",
+            "fqn": "java.lang.Boolean",
+            "label": "Boolean"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
           "name": "role",
           "type": {
             "packageName": "io.jmix.usermgmt.entity",
@@ -611,6 +663,19 @@
           "transient": false
         },
         {
+          "name": "readOnly",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Boolean",
+            "fqn": "java.lang.Boolean",
+            "label": "Boolean"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
           "name": "rowLevelPolicies",
           "type": {
             "packageName": "io.jmix.usermgmt.entity",
@@ -686,6 +751,19 @@
           "transient": false
         },
         {
+          "name": "readOnly",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Boolean",
+            "fqn": "java.lang.Boolean",
+            "label": "Boolean"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
           "name": "role",
           "type": {
             "packageName": "io.jmix.usermgmt.entity",
@@ -745,6 +823,19 @@
           "mappingType": "DATATYPE",
           "readOnly": false,
           "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "readOnly",
+          "type": {
+            "packageName": "java.lang",
+            "className": "Boolean",
+            "fqn": "java.lang.Boolean",
+            "label": "Boolean"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": false,
           "transient": false
         },
         {
@@ -881,6 +972,70 @@
             "className": "String",
             "fqn": "java.lang.String",
             "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        }
+      ]
+    },
+    {
+      "name": "umgmt_UserRoleAssignments",
+      "className": "UserRoleAssignments",
+      "persistentEntity": true,
+      "idAttributeName": "id",
+      "attributes": [
+        {
+          "name": "id",
+          "type": {
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "resourceRoles",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "ResourceRole",
+            "fqn": "io.jmix.usermgmt.entity.ResourceRole",
+            "label": "ResourceRole",
+            "entityName": "umgmt_ResourceRole"
+          },
+          "mappingType": "ASSOCIATION",
+          "cardinality": "MANY_TO_MANY",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
+          "name": "rowLevelRoles",
+          "type": {
+            "packageName": "io.jmix.usermgmt.entity",
+            "className": "RowLevelRole",
+            "fqn": "io.jmix.usermgmt.entity.RowLevelRole",
+            "label": "RowLevelRole",
+            "entityName": "umgmt_RowLevelRole"
+          },
+          "mappingType": "ASSOCIATION",
+          "cardinality": "MANY_TO_MANY",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
+          "name": "uuid",
+          "type": {
+            "packageName": "java.util",
+            "className": "UUID",
+            "fqn": "java.util.UUID",
+            "label": "UUID"
           },
           "mappingType": "DATATYPE",
           "readOnly": false,
