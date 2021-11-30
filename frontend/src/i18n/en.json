@@ -1,4 +1,6 @@
 {
+  "screen.UserList": "User List",
+  "screen.UserEditor": "User Editor",
   "screen.UserRoleAssignmentsList": "Users Assignments",
   "screen.UserRoleAssignmentsEditor": "User Assignments",
   "screen.UserCards": "User Cards",
@@ -170,5 +172,6 @@
   "antd.form.validation.array.max": "${name} shall have no more than ${max} elements.",
   "antd.form.validation.array.range": "${name} shall have from ${min} to ${max} elements.",
   "antd.form.validation.pattern.mismatch": "${name} does not match pattern ${pattern}.",
-  "jmix.usermgmt.allEntities": "All entities"
+  "jmix.usermgmt.allEntities": "All entities",
+  "jmix.usermgmt.roleAssignments": "Role assignments"
 }

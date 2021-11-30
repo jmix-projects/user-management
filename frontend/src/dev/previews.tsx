@@ -1,5 +1,6 @@
 import React from "react";
-import UserRoleAssignmentsList from "../app/user-role-assignments/UserRoleAssignmentsList";
+import UserList from "../app/user/UserList";
+import UserEditor from "../app/user/UserEditor";
 import UserRoleAssignmentsEditor from "../app/user-role-assignments/UserRoleAssignmentsEditor";
 import ResourceRoleList from "../app/resource-role/ResourceRoleList";
 import ResourceRoleEditor from "../app/resource-role/ResourceRoleEditor";
@@ -73,8 +74,11 @@ export const ComponentPreviews = () => {
       <ComponentPreview path="/UserRoleAssignmentsEditor">
         <UserRoleAssignmentsEditor />
       </ComponentPreview>
-      <ComponentPreview path="/UserRoleAssignmentsList">
-        <UserRoleAssignmentsList />
+      <ComponentPreview path="/UserEditor">
+        <UserEditor />
+      </ComponentPreview>
+      <ComponentPreview path="/UserList">
+        <UserList />
       </ComponentPreview>
     </Previews>
   );

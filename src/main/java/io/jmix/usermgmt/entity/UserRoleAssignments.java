@@ -1,11 +1,9 @@
 package io.jmix.usermgmt.entity;
 
-import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.UUID;
 
 @JmixEntity
 @Table(name = "UMGMT_USER_ROLE_ASSIGNMENTS")
@@ -27,10 +25,6 @@ public class UserRoleAssignments {
     @ManyToMany
     private List<RowLevelRole> rowLevelRoles;
 
-    @JmixGeneratedValue
-    @Column(name = "UUID")
-    private UUID uuid;
-
     public List<RowLevelRole> getRowLevelRoles() {
         return rowLevelRoles;
     }
@@ -45,14 +39,6 @@ public class UserRoleAssignments {
 
     public void setResourceRoles(List<ResourceRole> resourceRoles) {
         this.resourceRoles = resourceRoles;
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
     }
 
     public String getId() {
