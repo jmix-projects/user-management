@@ -1028,14 +1028,48 @@
           "readOnly": false,
           "mandatory": false,
           "transient": false
-        },
+        }
+      ]
+    },
+    {
+      "name": "umgmt_UserSession",
+      "className": "UserSession",
+      "persistentEntity": true,
+      "idAttributeName": "id",
+      "attributes": [
         {
-          "name": "uuid",
+          "name": "id",
           "type": {
             "packageName": "java.util",
             "className": "UUID",
             "fqn": "java.util.UUID",
             "label": "UUID"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": true,
+          "transient": false
+        },
+        {
+          "name": "username",
+          "type": {
+            "packageName": "java.lang",
+            "className": "String",
+            "fqn": "java.lang.String",
+            "label": "String"
+          },
+          "mappingType": "DATATYPE",
+          "readOnly": false,
+          "mandatory": false,
+          "transient": false
+        },
+        {
+          "name": "lastRequest",
+          "type": {
+            "packageName": "java.util",
+            "className": "Date",
+            "fqn": "java.util.Date",
+            "label": "DateTime"
           },
           "mappingType": "DATATYPE",
           "readOnly": false,

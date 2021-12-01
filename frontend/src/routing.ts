@@ -1,3 +1,4 @@
+import "./app/user-session/UserSessionList";
 import "./app/user/UserList";
 import "./app/user/UserEditor";
 import "./app/user-role-assignments/UserRoleAssignmentsEditor";

@@ -11,6 +11,7 @@ import {
   Row,
   Space
 } from "antd";
+import UserSessionList from "../app/user-session/UserSessionList";
 import UserList from "../app/user/UserList";
 import UserEditor from "../app/user/UserEditor";
 import UserRoleAssignmentsEditor from "../app/user-role-assignments/UserRoleAssignmentsEditor";
@@ -242,6 +243,11 @@ const palette = () => (
       <Component name="UserList">
         <Variant>
           <UserList />
+        </Variant>
+      </Component>
+      <Component name="UserSessionList">
+        <Variant>
+          <UserSessionList />
         </Variant>
       </Component>
     </Category>

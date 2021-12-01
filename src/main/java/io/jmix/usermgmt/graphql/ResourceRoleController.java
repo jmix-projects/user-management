@@ -10,6 +10,7 @@ import io.jmix.graphql.modifier.GraphQLUpsertEntityDataFetcher;
 import io.jmix.graphql.modifier.GraphQLUpsertEntityDataFetcherContext;
 import io.jmix.security.model.ResourcePolicy;
 import io.jmix.security.model.ResourcePolicyType;
+import io.jmix.security.model.SecurityScope;
 import io.jmix.security.role.ResourceRoleRepository;
 import io.jmix.securitydata.entity.ResourcePolicyEntity;
 import io.jmix.securitydata.entity.ResourceRoleEntity;
@@ -81,7 +82,9 @@ public class ResourceRoleController implements GraphQLEntityListDataFetcher<Reso
 
     @Override
     public List<ResourceRole> loadEntityList(GraphQLEntityListDataFetcherContext<ResourceRole> context) {
+        //noinspection ConstantConditions
         Stream<ResourceRole> stream = roleRepository.getAllRoles().stream()
+                .filter(role -> role.getScopes() != null && role.getScopes().contains(SecurityScope.API))
                 .map(resourceRoleMapper::mapToDto);
 
         Comparator<ResourceRole> comparator = getComparator(context.getLoadContext());

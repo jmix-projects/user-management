@@ -32,6 +32,12 @@ export const AppMenu = (props: AppMenuProps) => {
         caption={"screen.UserList"}
         key={"3002cfdf-c239-4fff-92a7-3e117684fa3c"}
       />
+      <MenuItem
+        screenId={"UserSessionList"}
+        icon={<BarsOutlined />}
+        caption={"screen.UserSessionList"}
+        key={"3002cfdf-c239-4fff-92a7-3e1176e4fa3c"}
+      />
       <AddonsMenu key={"addonsMenu"} />
     </VerticalMenu>
   );

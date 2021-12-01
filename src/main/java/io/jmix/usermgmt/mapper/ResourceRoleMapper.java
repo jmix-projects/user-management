@@ -2,13 +2,14 @@ package io.jmix.usermgmt.mapper;
 
 import io.jmix.core.Metadata;
 import io.jmix.core.UuidProvider;
+import io.jmix.security.model.SecurityScope;
 import io.jmix.securitydata.entity.ResourceRoleEntity;
-import io.jmix.securitydata.entity.RowLevelRoleEntity;
 import io.jmix.usermgmt.entity.ResourceRole;
-import io.jmix.usermgmt.entity.RowLevelRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.UUID;
 
@@ -65,6 +66,7 @@ public class ResourceRoleMapper {
         dst.setCode(src.getCode());
         dst.setName(src.getName());
         dst.setDescription(src.getDescription());
+        dst.setScopes(new HashSet<>(Arrays.asList(SecurityScope.API, SecurityScope.UI)));
 
         return dst;
     }

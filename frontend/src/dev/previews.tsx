@@ -1,4 +1,5 @@
 import React from "react";
+import UserSessionList from "../app/user-session/UserSessionList";
 import UserList from "../app/user/UserList";
 import UserEditor from "../app/user/UserEditor";
 import UserRoleAssignmentsEditor from "../app/user-role-assignments/UserRoleAssignmentsEditor";
@@ -79,6 +80,9 @@ export const ComponentPreviews = () => {
       </ComponentPreview>
       <ComponentPreview path="/UserList">
         <UserList />
+      </ComponentPreview>
+      <ComponentPreview path="/UserSessionList">
+        <UserSessionList />
       </ComponentPreview>
     </Previews>
   );
