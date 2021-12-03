@@ -1,4 +1,5 @@
 {
+  "screen.ChangePasswordComponent": "Change password",
   "screen.UserSessionList": "User Session List",
   "screen.UserList": "User List",
   "screen.UserEditor": "User Editor",
@@ -176,5 +177,12 @@
   "jmix.usermgmt.allEntities": "All entities",
   "jmix.usermgmt.roleAssignments": "Role assignments",
   "jmix.usermgmt.userSessions.refresh": "Refresh",
-  "jmix.usermgmt.userSessions.invalidate": "Invalidate"
+  "jmix.usermgmt.userSessions.invalidate": "Invalidate",
+  "jmix.usermgmt.changePassword": "Change password",
+  "jmix.usermgmt.changePassword.username": "Username",
+  "jmix.usermgmt.changePassword.newPassword": "New password",
+  "jmix.usermgmt.changePassword.confirmNewPassword": "Confirm new password",
+  "jmix.usermgmt.changePassword.error": "Error",
+  "jmix.usermgmt.changePassword.passwordsDoNotMatch": "Passwords don't match",
+  "jmix.usermgmt.changePassword.requiredPassword": "Please input new password"
 }

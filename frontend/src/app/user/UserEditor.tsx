@@ -37,7 +37,6 @@ const LOAD_UMGMT_USER = gql`
       email
       firstName
       lastName
-      password
       timeZoneId
       username
     }
@@ -101,20 +100,13 @@ const UserEditor = observer((props: EntityEditorProps<User>) => {
         form={form}
         validateMessages={createAntdFormValidationMessages(intl)}
       >
-        <Field
-          entityName={ENTITY_NAME}
-          propertyName="active"
-          formItemProps={{
-            style: { marginBottom: "12px" },
-            valuePropName: "checked"
-          }}
-        />
 
         <Field
           entityName={ENTITY_NAME}
-          propertyName="email"
+          propertyName="username"
           formItemProps={{
-            style: { marginBottom: "12px" }
+            style: { marginBottom: "12px" },
+            rules: [{ required: true }]
           }}
         />
 
@@ -136,7 +128,7 @@ const UserEditor = observer((props: EntityEditorProps<User>) => {
 
         <Field
           entityName={ENTITY_NAME}
-          propertyName="password"
+          propertyName="email"
           formItemProps={{
             style: { marginBottom: "12px" }
           }}
@@ -152,10 +144,10 @@ const UserEditor = observer((props: EntityEditorProps<User>) => {
 
         <Field
           entityName={ENTITY_NAME}
-          propertyName="username"
+          propertyName="active"
           formItemProps={{
             style: { marginBottom: "12px" },
-            rules: [{ required: true }]
+            valuePropName: "checked"
           }}
         />
 

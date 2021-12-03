@@ -19,7 +19,8 @@ import {
 import {User} from "../../jmix/entities/umgmt_User";
 import {FormattedMessage} from "react-intl";
 import {gql} from "@apollo/client";
-import {showRoleAssignmentsComponent} from "../user-role-assignments/roleAssignments.action";
+import {showRoleAssignmentsComponent} from "../user-role-assignments";
+import {showChangePasswordComponent} from "../changepassword";
 
 const ENTITY_NAME = "umgmt_User";
 const ROUTING_PATH = "/userList";
@@ -95,6 +96,15 @@ const UserList = observer((props: EntityListProps<User>) => {
     showRoleAssignmentsComponent(value!.username, screens)
   }, [entityListState, items, screens]);
 
+  const handleChangePassword = useCallback(() => {
+    const value = items?.find(({id}) => {
+      return id === entityListState!.selectedEntityId!
+    });
+    if (value!.username) {
+      showChangePasswordComponent(value!.username, ROUTING_PATH, screens)
+    }
+  }, [entityListState, items, screens]);
+
   if (error != null) {
     console.error(error);
     return <RetryDialog onRetry={executeListQuery}/>;
@@ -163,6 +173,23 @@ const UserList = observer((props: EntityListProps<User>) => {
         type="default"
       >
         <FormattedMessage id="jmix.usermgmt.roleAssignments"/>
+      </Button>
+    </EntityPermAccessControl>,
+
+    <EntityPermAccessControl
+      entityName={ENTITY_NAME}
+      operation="update"
+      key="changePassword"
+    >
+      <Button
+        htmlType="button"
+        style={{margin: "0 12px 12px 0"}}
+        disabled={entityListState.selectedEntityId == null}
+        onClick={handleChangePassword}
+        key="changePassword"
+        type="default"
+      >
+        <FormattedMessage id="jmix.usermgmt.changePassword"/>
       </Button>
     </EntityPermAccessControl>
   ];

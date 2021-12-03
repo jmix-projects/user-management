@@ -1,3 +1,4 @@
+import "./app/changepassword/ChangePasswordComponent";
 import "./app/user-session/UserSessionList";
 import "./app/user/UserList";
 import "./app/user/UserEditor";
