@@ -60,6 +60,7 @@ const UserEditor = observer((props: EntityEditorProps<User>) => {
   const [form] = useForm();
   const onSubmitFailed = useSubmitFailedCallback();
   const {
+    item,
     executeLoadQuery,
     loadQueryResult: { loading: queryLoading, error: queryError },
     upsertMutationResult: { loading: upsertLoading },
@@ -81,6 +82,12 @@ const UserEditor = observer((props: EntityEditorProps<User>) => {
   });
 
   useDefaultEditorHotkeys({ saveEntity: form.submit });
+
+  if (item) {
+    form.setFieldsValue({'active': item.active})
+  } else {
+    form.setFieldsValue({'active': true})
+  }
 
   if (queryLoading) {
     return <Spinner />;

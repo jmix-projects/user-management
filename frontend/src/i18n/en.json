@@ -184,5 +184,6 @@
   "jmix.usermgmt.changePassword.confirmNewPassword": "Confirm new password",
   "jmix.usermgmt.changePassword.error": "Error",
   "jmix.usermgmt.changePassword.passwordsDoNotMatch": "Passwords don't match",
+  "jmix.usermgmt.changePassword.errorOnPasswordChange": "An error occurred while changing the password",
   "jmix.usermgmt.changePassword.requiredPassword": "Please input new password"
 }

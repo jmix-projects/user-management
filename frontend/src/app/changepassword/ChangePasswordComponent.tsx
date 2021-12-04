@@ -24,8 +24,6 @@ export const ChangePasswordComponent: React.FC<ChangePasswordProps> = observer((
 
   const goToParentScreen = useParentScreen(basePath)
 
-  console.log(username)
-
   const onSubmit = useCallback(() => {
     const newPassword = form.getFieldValue('newPassword')
     const confirmNewPassword = form.getFieldValue('confirmNewPassword')
@@ -36,7 +34,15 @@ export const ChangePasswordComponent: React.FC<ChangePasswordProps> = observer((
           username: username,
           password: newPassword
         },
-      })
+      }).catch(() => {
+        notifications.show({
+          title: intl.formatMessage({id: 'jmix.usermgmt.changePassword.error'}),
+          description: intl.formatMessage({id: 'jmix.usermgmt.changePassword.errorOnPasswordChange'}),
+          type: NotificationType.ERROR,
+          key: '1',
+          duration: null,
+        });
+      }).then(() => goToParentScreen())
     } else {
       notifications.show({
         title: intl.formatMessage({id: 'jmix.usermgmt.changePassword.error'}),
@@ -67,7 +73,6 @@ export const ChangePasswordComponent: React.FC<ChangePasswordProps> = observer((
         >
           <Input disabled={true}/>
         </Form.Item>
-
 
         <Form.Item
           label={intl.formatMessage({id: 'jmix.usermgmt.changePassword.newPassword'})}
