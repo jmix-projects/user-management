@@ -37,6 +37,7 @@ const LOAD_UMGMT_ROWLEVELROLE = gql`
       childRoles
       code
       description
+      readOnly
       name
       rowLevelPolicies {
         id
@@ -119,6 +120,7 @@ const RowLevelRoleEditor = observer(
               style: { marginBottom: "12px" },
               rules: [{ required: true }]
             }}
+            disabled={item?.readOnly === true}
           />
 
           <Field
@@ -128,6 +130,7 @@ const RowLevelRoleEditor = observer(
               style: { marginBottom: "12px" },
               rules: [{ required: true }]
             }}
+            disabled={item?.readOnly === true}
           />
 
           <TextArea
@@ -136,6 +139,7 @@ const RowLevelRoleEditor = observer(
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
+            disabled={item?.readOnly === true}
           />
 
           <Field
@@ -144,6 +148,7 @@ const RowLevelRoleEditor = observer(
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
+            disabled={item?.readOnly === true}
           />
 
           <GlobalErrorsAlert serverValidationErrors={serverValidationErrors} />

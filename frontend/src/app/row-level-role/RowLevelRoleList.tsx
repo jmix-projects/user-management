@@ -41,6 +41,7 @@ const UMGMT_ROWLEVELROLE_LIST = gql`
       _instanceName
       code
       name
+      readOnly
     }
   }
 `;
@@ -74,6 +75,14 @@ const RowLevelRoleList = observer((props: EntityListProps<RowLevelRole>) => {
     onEntityDelete,
     onOpenScreenError
   });
+
+  let deleteDisabled = entityListState.selectedEntityId == null
+  if (!deleteDisabled) {
+    const currentItem = items?.find((element, index, array) => element.id === entityListState.selectedEntityId);
+    if (currentItem) {
+      deleteDisabled = currentItem.readOnly === true
+    }
+  }
 
   useDefaultBrowserTableHotkeys({
     selectedEntityId: entityListState.selectedEntityId,
@@ -128,7 +137,7 @@ const RowLevelRoleList = observer((props: EntityListProps<RowLevelRole>) => {
       <Button
         htmlType="button"
         style={{margin: "0 12px 12px 0"}}
-        disabled={entityListState.selectedEntityId == null}
+        disabled={deleteDisabled}
         onClick={handleDeleteBtnClick}
         key="remove"
         type="default"
